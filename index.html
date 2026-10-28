@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার দোকান</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Anek+Bangla:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--sb:#14301F;--sb-h:#1d4029;--sb-a:#265534;--sb-b:#24462f;--sb-t:#a9c1b0;--sb-ta:#fff;--bg:#E8ECE3;--card:#fff;--tp:#1a2236;--ts:#5a6478;--tm:#8e99a8;--bd:#dfe3ea;--grn:#0fa968;--grn-l:#e6f9f0;--grn-d:#088a54;--blu:#2e7cf6;--blu-l:#e8f0fe;--blu-d:#1a62d4;--org:#f59e0b;--org-l:#fef8e8;--pur:#7c3aed;--pur-l:#f3eeff;--red:#ef4444;--red-l:#fef0f0;--teal:#0d9488;--teal-l:#e6f9f7;--ind:#4f46e5;--ind-l:#eef2ff;--rose:#e11d48;--rose-l:#fff1f2;--amb:#d97706;--amb-l:#fffbeb}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--tp);min-height:100vh}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#c5c9d4;border-radius:3px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:var(--sb);z-index:100;display:flex;flex-direction:column;transition:transform .3s;border-right:1px solid var(--sb-b)}.sb-head{padding:18px 16px;border-bottom:1px solid var(--sb-b);display:flex;align-items:center;gap:10px}.sb-logo{width:40px;height:40px;background:linear-gradient(135deg,var(--grn),var(--grn-d));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;font-family:'Space Grotesk',sans-serif;flex-shrink:0}.sb-brand{font-size:15px;font-weight:700;color:#fff;line-height:1.2}.sb-sub{font-size:10px;color:var(--sb-t)}.sb-nav{flex:1;padding:12px 8px;overflow-y:auto}.nav-lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:1.5px;color:#7fa08a;padding:12px 12px 5px;font-weight:700}.nav-i{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:7px;color:var(--sb-t);cursor:pointer;transition:all .18s;margin-bottom:1px;font-size:13.5px;font-weight:500;position:relative}.nav-i:hover{background:var(--sb-h);color:#c5d4ec}.nav-i.act{background:var(--sb-a);color:var(--sb-ta);font-weight:600}.nav-i.act::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:55%;background:#F2B705;border-radius:0 3px 3px 0}.nav-i i{width:18px;text-align:center;font-size:13px}.sb-foot{padding:12px;border-top:1px solid var(--sb-b)}.sb-user{display:flex;align-items:center;gap:9px;padding:8px;background:var(--sb-h);border-radius:7px}.sb-av{width:32px;height:32px;border-radius:7px;background:linear-gradient(135deg,var(--grn),var(--grn-d));display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0}.sb-nm{font-size:11.5px;font-weight:600;color:#fff}.sb-rl{font-size:9.5px;color:var(--sb-t)}.main{margin-left:250px;min-height:100vh}.topbar{background:var(--card);border-bottom:1px solid var(--bd);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}.tb-l{display:flex;align-items:center;gap:12px}.hamb{display:none;background:none;border:none;color:var(--ts);font-size:18px;cursor:pointer}.tb-title{font-size:17px;font-weight:700}.tb-r{display:flex;align-items:center;gap:14px}.dt-box{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ts);background:var(--bg);padding:5px 12px;border-radius:5px}.dt-box i{color:var(--blu);font-size:12px}.dt-d{font-weight:600}.dt-t{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--blu)}.dt-s{color:var(--bd)}.tb-btn{background:none;border:1px solid var(--bd);color:var(--ts);width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;font-size:13px;position:relative}.tb-btn:hover{background:var(--bg);color:var(--tp)}.nd{position:absolute;top:4px;right:4px;width:7px;height:7px;background:var(--red);border-radius:50%;border:1.5px solid var(--card)}.sync-btn{background:none;border:1px solid var(--bd);color:var(--ts);height:34px;padding:0 10px;border-radius:6px;display:flex;align-items:center;gap:5px;cursor:pointer;transition:all .18s;font-size:12px;font-family:'Hind Siliguri',sans-serif}.sync-btn:hover{background:var(--bg);color:var(--tp)}.sync-btn.syncing i{animation:spin 1s linear infinite}.sync-btn.synced{color:var(--grn);border-color:#b8e8d4}.sync-btn.error{color:var(--red);border-color:#fdd}@keyframes spin{to{transform:rotate(360deg)}}.lo-btn{display:flex;align-items:center;gap:6px;background:var(--red-l);border:1px solid #fdd;color:var(--red);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Hind Siliguri',sans-serif}.lo-btn:hover{background:#fde2e2}.page{display:none;padding:20px 24px}.page.act{display:block}.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}.m-card{border-radius:10px;border:1px solid var(--bd);overflow:hidden;transition:box-shadow .25s,transform .25s}.m-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}.mc-top{padding:16px 18px 12px;display:flex;align-items:flex-start;justify-content:space-between}.mc-info{flex:1}.mc-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}.mc-val{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1.1}.mc-sub{font-size:11px;color:var(--tm);margin-top:3px}.mc-ic{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:#fff}.mc-bot{padding:10px 18px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}.mc-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:6px;border:none;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Hind Siliguri',sans-serif;color:#fff}.mc-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.card-green{background:#0a8c56;color:#fff}.card-green .mc-lbl{color:rgba(255,255,255,.75)}.card-green .mc-sub{color:rgba(255,255,255,.55)}.card-green .mc-val{color:#fff}.card-green .mc-ic{background:rgba(255,255,255,.18)}.card-green .mc-ic i{color:#fff}.card-green .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-blue{background:#1a5fe0;color:#fff}.card-blue .mc-lbl{color:rgba(255,255,255,.75)}.card-blue .mc-sub{color:rgba(255,255,255,.55)}.card-blue .mc-val{color:#fff}.card-blue .mc-ic{background:rgba(255,255,255,.18)}.card-blue .mc-ic i{color:#fff}.card-blue .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-orange{background:#d97706;color:#fff}.card-orange .mc-lbl{color:rgba(255,255,255,.8)}.card-orange .mc-sub{color:rgba(255,255,255,.6)}.card-orange .mc-val{color:#fff}.card-orange .mc-ic{background:rgba(255,255,255,.18)}.card-orange .mc-ic i{color:#fff}.card-orange .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-purple{background:#6d28d9;color:#fff}.card-purple .mc-lbl{color:rgba(255,255,255,.75)}.card-purple .mc-sub{color:rgba(255,255,255,.55)}.card-purple .mc-val{color:#fff}.card-purple .mc-ic{background:rgba(255,255,255,.18)}.card-purple .mc-ic i{color:#fff}.card-purple .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-teal{background:#0a7e74;color:#fff}.card-teal .mc-lbl{color:rgba(255,255,255,.75)}.card-teal .mc-sub{color:rgba(255,255,255,.55)}.card-teal .mc-val{color:#fff}.card-teal .mc-ic{background:rgba(255,255,255,.18)}.card-teal .mc-ic i{color:#fff}
+.card-indigo{background:#3f38c7;color:#fff}.card-indigo .mc-lbl{color:rgba(255,255,255,.75)}.card-indigo .mc-sub{color:rgba(255,255,255,.55)}.card-indigo .mc-val{color:#fff}.card-indigo .mc-ic{background:rgba(255,255,255,.18)}.card-indigo .mc-ic i{color:#fff}
+.card-rose{background:#be123c;color:#fff}.card-rose .mc-lbl{color:rgba(255,255,255,.8)}.card-rose .mc-sub{color:rgba(255,255,255,.6)}.card-rose .mc-val{color:#fff}.card-rose .mc-ic{background:rgba(255,255,255,.18)}.card-rose .mc-ic i{color:#fff}.card-rose .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-amber{background:#b45309;color:#fff}.card-amber .mc-lbl{color:rgba(255,255,255,.8)}.card-amber .mc-sub{color:rgba(255,255,255,.6)}.card-amber .mc-val{color:#fff}.card-amber .mc-ic{background:rgba(255,255,255,.18)}.card-amber .mc-ic i{color:#fff}
+.card-cyan{background:#007c8a;color:#fff}.card-cyan .mc-lbl{color:rgba(255,255,255,.8)}.card-cyan .mc-sub{color:rgba(255,255,255,.6)}.card-cyan .mc-val{color:#fff}.card-cyan .mc-ic{background:rgba(255,255,255,.18)}.card-cyan .mc-ic i{color:#fff}.card-cyan .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.card-lime{background:#3d6b1e;color:#fff}.card-lime .mc-lbl{color:rgba(255,255,255,.8)}.card-lime .mc-sub{color:rgba(255,255,255,.6)}.card-lime .mc-val{color:#fff}.card-lime .mc-ic{background:rgba(255,255,255,.18)}.card-lime .mc-ic i{color:#fff}.card-lime .mc-btn{background:rgba(255,255,255,.2);color:#fff}
+.mc-trend{font-size:10.5px;font-weight:600;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px}.tr-up{background:var(--grn-l);color:var(--grn)}.tr-dn{background:var(--red-l);color:var(--red)}.panel{background:var(--card);border-radius:10px;border:1px solid var(--bd);overflow:hidden;margin-top:14px}.p-head{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}.p-head h3{font-size:14px;font-weight:700;display:flex;align-items:center;gap:7px}.p-head h3 i{color:var(--blu);font-size:13px}.p-body{padding:14px 18px}.srch{width:100%;background:var(--card);border:1px solid var(--bd);border-radius:7px;padding:8px 12px 8px 34px;font-size:13px;color:var(--tp);font-family:'Hind Siliguri',sans-serif;outline:none;transition:border-color .18s}.srch:focus{border-color:var(--blu);box-shadow:0 0 0 3px var(--blu-l)}.srch-wrap{position:relative;margin-bottom:14px}.srch-wrap i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--tm);font-size:13px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--tm);font-weight:600;padding:0 0 8px;border-bottom:1px solid var(--bd);white-space:nowrap}td{padding:9px 0;font-size:12.5px;color:var(--ts);border-bottom:1px solid var(--bd);vertical-align:middle}tr:last-child td{border-bottom:none}.t-name{color:var(--tp);font-weight:600;cursor:pointer}.t-name:hover{color:var(--blu)}.t-num{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--tp)}.t-click{cursor:pointer;color:var(--blu);font-weight:500}.t-click:hover{text-decoration:underline}.ib{background:none;border:none;cursor:pointer;font-size:14px;padding:3px 5px;border-radius:4px;transition:all .15s}.ib:hover{background:var(--bg)}.ib.edit{color:var(--blu)}.ib.save{color:var(--grn)}.ib.cancel{color:var(--red)}.ib.del{color:var(--red)}.s-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block}.s-dep{background:var(--grn-l);color:var(--grn)}.s-ch{background:var(--blu-l);color:var(--blu)}.s-pay{background:var(--org-l);color:var(--org)}.ed-inp{background:var(--bg);border:1px solid var(--blu);border-radius:4px;padding:3px 6px;font-size:12px;color:var(--tp);font-family:'Hind Siliguri',sans-serif;width:100%;outline:none}.ed-inp.num{text-align:right;width:70px}.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(3px)}.modal-ov.show{display:flex}.modal-ov.sub{z-index:310}.modal-ov.sub2{z-index:320}.modal{background:var(--card);border-radius:12px;width:620px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,.2);animation:mIn .22s ease}.modal.sm{width:440px}@keyframes mIn{from{opacity:0;transform:scale(.97) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}.m-head{padding:16px 20px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:1;border-radius:12px 12px 0 0}.m-head h3{font-size:15px;font-weight:700}.m-x{background:none;border:none;color:var(--tm);font-size:16px;cursor:pointer;padding:3px}.m-x:hover{color:var(--tp)}.m-body{padding:20px}.m-foot{padding:12px 20px;border-top:1px solid var(--bd);display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:0;background:var(--card);border-radius:0 0 12px 12px}.fg{margin-bottom:14px}.fg label{display:block;font-size:11.5px;font-weight:600;color:var(--ts);margin-bottom:4px}.fg input,.fg select{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:8px 11px;color:var(--tp);font-size:13px;font-family:'Hind Siliguri',sans-serif;outline:none;transition:border-color .18s}.fg input:focus,.fg select:focus{border-color:var(--blu);box-shadow:0 0 0 3px var(--blu-l)}.fg input::placeholder{color:var(--tm)}.mbtn{padding:7px 16px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Hind Siliguri',sans-serif;border:none}.mbtn-g{background:none;border:1px solid var(--bd);color:var(--ts)}.mbtn-g:hover{background:var(--bg)}.mbtn-b{background:var(--blu);color:#fff}.mbtn-b:hover{background:var(--blu-d)}.mbtn-r{background:var(--red);color:#fff}.mbtn-r:hover{background:#dc2626}.mbtn-gr{background:var(--grn);color:#fff}.mbtn-gr:hover{background:var(--grn-d)}.calc-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;border-top:1px solid var(--bd)}.calc-row.due{color:var(--red);font-weight:700}.prod-dropdown{position:absolute;top:100%;left:0;right:0;background:var(--card);border:1px solid var(--bd);border-radius:0 0 6px 6px;max-height:150px;overflow-y:auto;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,.1)}.prod-dropdown div{padding:7px 11px;font-size:12.5px;cursor:pointer;border-bottom:1px solid var(--bd)}.prod-dropdown div:last-child{border-bottom:none}.prod-dropdown div:hover{background:var(--blu-l)}.toast-box{position:fixed;top:66px;right:20px;z-index:400;display:flex;flex-direction:column;gap:7px}.toast{background:var(--card);border:1px solid var(--bd);border-radius:7px;padding:10px 16px;display:flex;align-items:center;gap:9px;font-size:12.5px;box-shadow:0 6px 20px rgba(0,0,0,.1);animation:tIn .3s ease;min-width:240px}.toast.out{animation:tOut .25s ease forwards}.t-ic{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}.t-ic.ok{background:var(--grn-l);color:var(--grn)}.t-ic.info{background:var(--blu-l);color:var(--blu)}.t-ic.warn{background:var(--org-l);color:var(--org)}.t-ic.err{background:var(--red-l);color:var(--red)}@keyframes tIn{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:translateX(0)}}@keyframes tOut{to{opacity:0;transform:translateX(25px)}}.cust-info-bar{display:flex;flex-wrap:wrap;gap:16px;padding:12px 0;border-bottom:1px solid var(--bd);margin-bottom:14px;font-size:12.5px}.cust-info-bar span{color:var(--ts)}.cust-info-bar strong{color:var(--tp)}.cust-due-big{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--red)}.dlr-head{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--bd);margin-bottom:14px;flex-wrap:wrap;gap:8px}.dlr-name{font-size:18px;font-weight:700}.dlr-due{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--red)}.empty-msg{text-align:center;color:var(--tm);padding:20px}.more-prod-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;border:1px solid var(--blu);background:var(--blu-l);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Hind Siliguri',sans-serif;color:var(--blu);margin-top:8px}.more-prod-btn:hover{background:var(--blu);color:#fff}.cust-dd{position:absolute;top:100%;left:0;right:0;background:var(--card);border:1px solid var(--bd);border-radius:0 0 6px 6px;max-height:180px;overflow-y:auto;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,.1)}.cust-dd div{padding:9px 12px;font-size:13px;cursor:pointer;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}.cust-dd div:last-child{border-bottom:none}.cust-dd div:hover{background:var(--blu-l)}.cust-dd .cust-due{font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--tm)}.prod-list-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--bd);font-size:13px}.prod-list-item:last-child{border-bottom:none}.prod-list-item:hover{background:var(--blu-l)}.pl-add{background:var(--blu);color:#fff;border:none;padding:4px 12px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Hind Siliguri',sans-serif}.pl-add:hover{background:var(--blu-d)}.pl-added{background:var(--grn-l);color:var(--grn);border:1px solid #b8e8d4;padding:4px 12px;border-radius:5px;font-size:11px;font-weight:600}.dash-popup-opt{flex:1;padding:20px;border-radius:10px;border:1px solid var(--bd);cursor:pointer;text-align:center;transition:all .2s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.dash-popup-opt:hover{border-color:var(--blu);box-shadow:0 2px 8px rgba(0,0,0,.06)}.dash-popup-opt i{font-size:24px}.dash-popup-opt span{font-size:14px;font-weight:600}.low-stock-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bd);font-size:13px}.low-stock-item:last-child{border-bottom:none}.low-stock-name{color:var(--tp);font-weight:600}.low-stock-val{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--red);background:var(--red-l);padding:3px 8px;border-radius:4px}.stock-warn{background:var(--org-l);border:1px solid var(--org);color:var(--org);padding:6px 12px;border-radius:6px;font-size:12px;margin-bottom:10px;display:none}.sum-stat{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.sum-stat-item{background:var(--bg);border-radius:8px;padding:14px;text-align:center}.sum-stat-item .ss-val{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700}.sum-stat-item .ss-lbl{font-size:11px;color:var(--tm);margin-top:2px}.action-btns{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.action-btns button{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:6px;border:none;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Hind Siliguri',sans-serif;color:#fff}.action-btns button:hover{filter:brightness(1.08)}@media(max-width:768px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.hamb{display:flex}.cards-grid{grid-template-columns:1fr}.dt-box{display:none}.lo-btn span{display:none}.lo-btn{padding:5px 8px}.sum-stat{grid-template-columns:1fr}.sync-btn span{display:none}.sync-btn{padding:0 8px}.action-btns{flex-direction:column}.action-btns button{width:100%;justify-content:center}}
+
+/* ═══ ড্যাশবোর্ড: হিসাবের খাতা ═══ */
+.dx{--ink:#14301F;--rule:#cdd5c6;--paper:#FBFCF9;--c-red:#D6322B;--c-yel:#F2B705;--c-blu:#1F5FBF;--c-grn:#1E9A4B;max-width:1040px;margin:0 auto;color:var(--ink)}
+.dx-sheet{position:relative;background:var(--paper);border:1px solid var(--rule);border-radius:3px;box-shadow:0 6px 0 -2px #EEF2E9,0 7px 0 -2px var(--rule);overflow:hidden}
+.dx-sheet::before{content:'';position:absolute;top:7px;bottom:0;left:40px;width:5px;border-left:1px solid rgba(214,50,43,.55);border-right:1px solid rgba(214,50,43,.55);pointer-events:none}
+.dx-bands{display:grid;grid-template-columns:repeat(4,1fr);height:7px}
+.dx-bands i{display:block;transform-origin:left center;animation:dxWipe .8s cubic-bezier(.2,.7,.2,1) both}
+.dx-bands i:nth-child(1){background:var(--c-red)}
+.dx-bands i:nth-child(2){background:var(--c-yel);animation-delay:.12s}
+.dx-bands i:nth-child(3){background:var(--c-blu);animation-delay:.24s}
+.dx-bands i:nth-child(4){background:var(--c-grn);animation-delay:.36s}
+@keyframes dxWipe{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.dx-in{padding:14px 22px 12px 62px}
+.dx-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.dx-date{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.15}
+.dx-year{font-size:13.5px;color:#5d6f61}
+.dx-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px 36px;align-items:start}
+.dx-col h3{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-size:15.5px;font-weight:700;margin:0 0 2px;padding-bottom:3px;border-bottom:2px solid var(--ink)}
+.dx-line{display:flex;align-items:baseline;gap:8px;padding:4px 0;font-size:13px;color:#34463a}
+button.dx-line{width:100%;background:none;border:0;text-align:left;font-family:inherit;cursor:pointer}
+button.dx-line:hover .dx-l{text-decoration:underline;text-decoration-color:var(--c-blu);text-underline-offset:3px}
+.dx-fill{flex:1;min-width:12px;border-bottom:2px dotted #b4bfac;transform:translateY(-3px)}
+.dx-v{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap}
+.dx-line.tot{margin-top:3px;border-top:1.5px solid var(--ink);font-weight:700;color:var(--ink)}
+.dx-line.tot .dx-fill{border-color:transparent}
+.dx-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:3px double var(--ink);margin-top:10px;padding:8px 0 0}
+.dx-bottom span{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-size:15px;font-weight:700}
+.dx-bottom strong{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-size:clamp(20px,2.6vw,26px);font-weight:800;line-height:1.1}
+.dx-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed #bcc7b5}
+.dx-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:3px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font-family:'Hind Siliguri',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s,color .15s}
+.dx-btn:hover{background:#265534;border-color:#265534}
+.dx-btn:focus-visible,.dx-tag:focus-visible,button.dx-line:focus-visible{outline:3px solid var(--c-blu);outline-offset:2px}
+.dx-tags{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+.dx-tag{position:relative;overflow:hidden;display:block;width:100%;text-align:left;background:var(--c);border:0;border-radius:6px;padding:20px 22px;min-height:118px;cursor:pointer;font-family:inherit;color:#fff;transition:filter .15s}
+.dx-tag:hover{filter:brightness(1.08)}
+.dx-tag-ic{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:54px;opacity:.22;pointer-events:none}
+.dx-tag.red{--c:#1D4E9E}.dx-tag.amb{--c:#0F6E66}
+.dx-tag span{display:block}
+.dx-tag-t{font-size:14px;font-weight:600;opacity:.92}
+.dx-tag-v{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-weight:800;font-size:32px;line-height:1.2;margin-top:4px}
+.dx-tag-s{font-size:12.5px;opacity:.85;margin-top:2px}
+@media(max-width:720px){.dx-in{padding:18px 16px 18px 46px}.dx-sheet::before{left:30px}.dx-cols{grid-template-columns:1fr;gap:20px}.dx-tags{grid-template-columns:1fr}.dx-acts{display:grid;grid-template-columns:1fr 1fr}.dx-btn{justify-content:center}.dx-acts .dx-btn:last-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.dx-bands i{animation:none}}
+/* পেছনের ছবি */
+/* ছবির ফ্রেম */
+.dx-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:stretch}
+.dx-main{min-width:0}
+.dx-photo{margin:0;border-radius:6px;border:1px solid var(--rule);background:linear-gradient(135deg,#dfe7d8,#a9bfa5) 42% 30%/cover no-repeat;min-height:320px}
+@media(max-width:1150px){.dx-grid{grid-template-columns:1fr}.dx-photo{order:-1;min-height:0;height:clamp(170px,36vw,260px);background-position:center 25%}}
+
+/* ═══ লগইন ও ব্যাকআপ বাটন ═══ */
+#loginOv{display:none;position:fixed;inset:0;z-index:500;background:#E8ECE3;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.lg-box{width:400px;max-width:100%;background:#FBFCF9;border:1px solid #cdd5c6;border-radius:3px;box-shadow:0 6px 0 -2px #EEF2E9,0 7px 0 -2px #cdd5c6;overflow:hidden}
+.lg-bands{display:grid;grid-template-columns:repeat(4,1fr);height:7px}
+.lg-bands i:nth-child(1){background:#D6322B}.lg-bands i:nth-child(2){background:#F2B705}.lg-bands i:nth-child(3){background:#1F5FBF}.lg-bands i:nth-child(4){background:#1E9A4B}
+.lg-in{padding:22px 24px 24px}
+.lg-t{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-size:28px;font-weight:800;color:#14301F;line-height:1.2}
+.lg-s{font-size:13.5px;color:#5d6f61;margin:2px 0 18px}
+.lg-btn{width:100%;padding:11px 16px;border:0;border-radius:3px;background:#14301F;color:#fff;font-family:'Hind Siliguri',sans-serif;font-size:15px;font-weight:600;cursor:pointer}
+.lg-btn:hover{background:#265534}.lg-btn:disabled{opacity:.6;cursor:wait}
+.lg-btn:focus-visible{outline:3px solid #1F5FBF;outline-offset:2px}
+.lg-err{color:#C62F2A;font-size:13px;min-height:20px;margin-bottom:8px}
+.lg-hint{font-size:12px;color:#6b7c6f;margin-top:4px}
+.lg-pw{position:relative}.lg-pw input{padding-right:72px}
+.lg-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:#1F5FBF;font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;padding:6px 8px;cursor:pointer;border-radius:3px}
+.lg-eye:hover{background:#E8ECE3}.lg-eye:focus-visible{outline:3px solid #1F5FBF}
+.sb-tools{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.sb-tools button{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--sb-b);color:var(--sb-t);padding:7px 10px;border-radius:6px;font-family:'Hind Siliguri',sans-serif;font-size:12px;cursor:pointer;text-align:left}
+.sb-tools button:hover{background:var(--sb-h);color:#fff}
+
+/* ═══ সেটিং পাতা ═══ */
+.st{max-width:1040px;margin:0 auto;color:#14301F}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.st-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.st-card{background:#FBFCF9;border:1px solid #cdd5c6;border-top:4px solid var(--btn,#14301F);border-radius:3px;padding:14px 16px 16px}
+.st-card h3{font-family:'Anek Bangla','Hind Siliguri',sans-serif;font-size:17px;font-weight:700;margin:0 0 4px}
+.st-note{font-size:12.5px;color:#5d6f61;margin:0 0 12px;line-height:1.5}
+.st-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.st-lbl{font-size:13.5px;font-weight:600;min-width:104px}
+.st-sw{display:flex;gap:8px;flex-wrap:wrap}
+.st-sw button{width:30px;height:30px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px #9fae96;cursor:pointer;padding:0}
+.st-sw button.on{box-shadow:0 0 0 3px #14301F}
+.st-sw button:focus-visible,.st-seg button:focus-visible,.st-btn:focus-visible,.st input[type=color]:focus-visible{outline:3px solid #1F5FBF;outline-offset:2px}
+.st input[type=color]{width:42px;height:32px;padding:0;border:1px solid #cdd5c6;border-radius:4px;background:none;cursor:pointer}
+.st-seg{display:inline-flex;border:1.5px solid var(--btn,#14301F);border-radius:4px;overflow:hidden}
+.st-seg button{border:0;background:#fff;padding:6px 16px;font-family:'Hind Siliguri',sans-serif;font-size:13px;cursor:pointer;color:#14301F}
+.st-seg button.on{background:var(--btn,#14301F);color:var(--btn-t,#fff)}
+.st-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:3px;border:1.5px solid #14301F;background:#fff;color:#14301F;font-family:'Hind Siliguri',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer}
+.st-btn:hover{background:#E8ECE3}
+.st-btn.dg{border-color:#C62F2A;color:#C62F2A}.st-btn.dg:hover{background:#FBE4E2}
+.st-btns{display:flex;gap:8px;flex-wrap:wrap}
+.st-msg{font-size:13px;min-height:19px;margin:2px 0 8px}.st-msg.ok{color:#1E7A3C}.st-msg.err{color:#C62F2A}
+.st .fg{margin-bottom:12px}
+.st-pwwrap{position:relative}.st-pwwrap input{padding-right:72px}
+.st-prev{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#E8ECE3;border-radius:4px;margin-bottom:4px}
+@media(max-width:860px){.st-grid{grid-template-columns:1fr}}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#14301F"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="হিসাব"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+<body>
+<aside class="sidebar" id="sidebar"><div class="sb-head"><div class="sb-logo">দো</div><div><div class="sb-brand">আমার দোকান</div><div class="sb-sub">ম্যানেজমেন্ট সিস্টেম</div></div></div><nav class="sb-nav"><div class="nav-lbl">প্রধান মেনু</div><div class="nav-i act" data-p="dashboard" tabindex="0"><i class="fas fa-th-large"></i><span>ড্যাশবোর্ড</span></div><div class="nav-i" data-p="products" tabindex="0"><i class="fas fa-boxes-stacked"></i><span>পণ্য তালিকা</span></div><div class="nav-i" data-p="stocks" tabindex="0"><i class="fas fa-warehouse"></i><span>পণ্য স্টক</span></div><div class="nav-i" data-p="customers" tabindex="0"><i class="fas fa-users"></i><span>গ্রাহক তালিকা</span></div><div class="nav-i" data-p="dealers" tabindex="0"><i class="fas fa-building"></i><span>কোম্পানি/ডিলার</span></div><div class="nav-lbl" style="margin-top:10px">রিপোর্ট</div><div class="nav-i" data-p="summary" tabindex="0"><i class="fas fa-calculator"></i><span>হিসাব সারাংশ</span></div><div class="nav-lbl" style="margin-top:10px">সিস্টেম</div><div class="nav-i" data-p="settings" tabindex="0"><i class="fas fa-gear"></i><span>সেটিং</span></div></nav><div class="sb-foot"><div class="sb-tools"><button type="button" onclick="dlBackup()"><i class="fas fa-download"></i> ব্যাকআপ নামান</button><button type="button" onclick="document.getElementById('rsFile').click()"><i class="fas fa-upload"></i> ব্যাকআপ ফেরান</button><input type="file" id="rsFile" accept=".json,application/json" style="display:none" onchange="rsBackup(this)"></div><div class="sb-user"><div class="sb-av">ব</div><div><div class="sb-nm">ব্যবহারকারী</div><div class="sb-rl">মালিক</div></div></div></div></aside>
+<main class="main"><header class="topbar"><div class="tb-l"><button class="hamb" id="hamb" aria-label="মেনু"><i class="fas fa-bars"></i></button><h1 class="tb-title" id="pageTitle">ড্যাশবোর্ড</h1></div><div class="tb-r"><button class="sync-btn synced" id="syncBtn" onclick="manualSync()"><i class="fas fa-cloud"></i><span>সিঙ্ক</span></button><div class="dt-box"><i class="far fa-calendar-alt"></i><span class="dt-d" id="dtDate"></span><span class="dt-s">|</span><span class="dt-t" id="dtTime"></span></div><button class="tb-btn" id="notifBtn" aria-label="নোটিফিকেশন"><i class="far fa-bell"></i><span class="nd"></span></button><button class="lo-btn" id="loBtn"><i class="fas fa-sign-out-alt"></i><span>লগআউট</span></button></div></header><div id="pgDashboard" class="page act"></div><div id="pgProducts" class="page"></div><div id="pgStocks" class="page"></div><div id="pgCustomers" class="page"></div><div id="pgDealers" class="page"></div><div id="pgSummary" class="page"></div><div id="pgSettings" class="page"></div></main>
+<div class="modal-ov" id="mainModal"><div class="modal" id="mainModalInner"></div></div>
+<div class="modal-ov sub" id="subModal"><div class="modal" id="subModalInner"></div></div>
+<div class="modal-ov sub2" id="sub2Modal"><div class="modal sm" id="sub2ModalInner"></div></div>
+<div class="toast-box" id="toastBox"></div>
+<div id="loginOv"><div class="lg-box"><div class="lg-bands" aria-hidden="true"><i></i><i></i><i></i><i></i></div><form class="lg-in" onsubmit="doLogin();return false"><h2 class="lg-t">আমার দোকান</h2><p class="lg-s">হিসাব দেখতে প্রবেশ করুন</p><div class="fg"><label for="lgEm">আইডি</label><input id="lgEm" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="আপনার আইডি"></div><div class="fg"><label for="lgPw">পাসওয়ার্ড</label><div class="lg-pw"><input id="lgPw" name="password" type="password" autocomplete="current-password" placeholder="পাসওয়ার্ড"><button type="button" class="lg-eye" id="lgEye" onclick="togglePw()" aria-label="পাসওয়ার্ড দেখুন">দেখুন</button></div></div><div class="lg-err" id="lgErr" role="alert"></div><button class="lg-btn" id="lgBtn" type="submit">প্রবেশ করুন</button><p class="lg-hint" style="margin-top:10px">এই ডিভাইসে একবার ঢুকলে ৩০ দিন আবার পাসওয়ার্ড লাগবে না। ইন্টারনেট না থাকলেও এই ডিভাইসে ঢোকা যাবে।</p></form></div></div>
+<div id="sbOv" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99"></div>
+<script>
+/* ═══════════════ ইউটিলিটি ═══════════════ */
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  ফায়ারবেসের কনফিগ: Firebase Console → Project settings →      ║
+   ║  Your apps → Web app → firebaseConfig থেকে কপি করে বসান        ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+var FB_CONFIG={apiKey:'',authDomain:'',projectId:'',storageBucket:'',messagingSenderId:'',appId:''};
+var ID_DOMAIN='hisab.app'; /* আইডির পেছনে এই নকল ঠিকানা বসে (অ্যাডমিন স্ক্রিপ্টেও একই রাখুন) */
+var SYNC_URL_DEFAULT='';
+var BN=['০','১','২','৩','৪','৫','৬','৭','৮','৯'],BNM={'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
+var MONTHS=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+function toBn(n){return String(n).replace(/[0-9]/g,function(d){return BN[+d]})}
+function toEn(s){return String(s).replace(/[০-৯]/g,function(d){return BNM[d]||d})}
+function isDP(t){return t.type?t.type==='payment':t.challanNo==='পেমেন্ট'}
+function itemCost(x){if(typeof x.buyPrice==='number')return x.buyPrice;var pr=DB.products.find(function(q){return(x.pid!=null&&q.id===x.pid)||q.name===x.name});return pr?pr.buyPrice:null}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function autoDate(){var d=new Date();return toBn(String(d.getDate()).padStart(2,'0'))+'/'+toBn(String(d.getMonth()+1).padStart(2,'0'))+'/'+toBn(d.getFullYear())}
+function autoDateFull(){var d=new Date();return toBn(d.getDate())+' '+MONTHS[d.getMonth()]+' '+toBn(d.getFullYear())+', '+['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'][d.getDay()]}
+function autoTime(){var h=new Date().getHours(),m=new Date().getMinutes(),ap=h>=12?'PM':'AM';h=h%12||12;return toBn(String(h).padStart(2,'0'))+':'+toBn(String(m).padStart(2,'0'))+' '+ap}
+function nextInv(n){return'SI-'+String(n).padStart(6,'0')}
+function parseDate(s){var p=String(s).split('/');if(p.length!==3)return null;return{day:parseInt(toEn(p[0])),month:parseInt(toEn(p[1]))-1,year:parseInt(toEn(p[2]))}}
+function isDIM(ds,m,y){var d=parseDate(ds);return d&&d.month===m&&d.year===y}
+
+/* ═══════════════ হিসাব ═══════════════ */
+function calcDue(c){return (c.prevDue||0)+c.transactions.reduce(function(s,t){return s+((t.type==='invoice'||t.type==='previous_due')?t.due:0)-(t.type==='deposit'?t.paid:0)},0)}
+function calcDD(d){return d.transactions.reduce(function(s,t){return s+(isDP(t)?-t.paid:t.due)},0)}
+function totalAllDue(){return DB.customers.reduce(function(s,c){return s+calcDue(c)},0)}
+function totalDD(){return DB.dealers.reduce(function(s,d){return s+calcDD(d)},0)}
+function getTE(){var td=autoDate();var e=DB.expenses.find(function(x){return x.date===td});if(!e){e={date:td,purchase:0,home:0,shop:0};DB.expenses.push(e)}return e}
+function getTTC(){var e=getTE();var dp=DB.dealers.reduce(function(s,d){return s+d.transactions.filter(function(t){return isDP(t)&&t.date===autoDate()}).reduce(function(sm,t){return sm+t.paid},0)},0);return e.purchase+e.home+e.shop+dp}
+function getCS(ds){var cs=DB.cashSales.filter(function(c){return c.date===ds}).reduce(function(s,c){return s+(c.total!=null?c.total:c.products.reduce(function(sm,p){return sm+p.qty*p.price},0))},0);var dp=DB.customers.reduce(function(s,c){return s+c.transactions.filter(function(t){return t.type==='invoice'&&t.date===ds}).reduce(function(sm,t){return sm+t.paid},0)},0);return cs+dp}
+function getCRS(ds){return DB.customers.reduce(function(s,c){return s+c.transactions.filter(function(t){return t.type==='invoice'&&t.date===ds}).reduce(function(sm,t){return sm+t.due},0)},0)}
+function getTTS(){return getCS(autoDate())+getCRS(autoDate())}
+function getProfit(ds){var p=0;DB.cashSales.filter(function(c){return c.date===ds}).forEach(function(c){var d=c.discount||0;c.products.forEach(function(x){var cst=itemCost(x);if(cst!=null)p+=(x.price-cst)*x.qty});p-=d});DB.customers.forEach(function(c){c.transactions.forEach(function(t){if(t.type==='invoice'&&t.date===ds){t.products.forEach(function(x){var cst=itemCost(x);if(cst!=null)p+=(x.price-cst)*x.qty})}})});return p}
+function getTP(){return getProfit(autoDate())}
+function getMD(m,y){var cs=0,cr=0,pf=0,pc=0,oe=0;DB.cashSales.forEach(function(c){if(isDIM(c.date,m,y)){cs+=(c.total!=null?c.total:c.products.reduce(function(s,p){return s+p.qty*p.price},0));var d=c.discount||0;c.products.forEach(function(p){var cst=itemCost(p);if(cst!=null)pf+=(p.price-cst)*p.qty});pf-=d}});DB.customers.forEach(function(c){c.transactions.forEach(function(t){if(!isDIM(t.date,m,y))return;if(t.type==='invoice'){cr+=t.totalBill;t.products.forEach(function(p){var cst=itemCost(p);if(cst!=null)pf+=(p.price-cst)*p.qty})}})});DB.expenses.forEach(function(e){if(isDIM(e.date,m,y)){pc+=e.purchase;oe+=e.home+e.shop}});DB.dealers.forEach(function(d){d.transactions.forEach(function(t){if(isDP(t)&&isDIM(t.date,m,y)){pc+=t.paid}})});return{cs:cs,cr:cr,ts:cs+cr,pf:pf,pc:pc,oe:oe,tc:pc+oe}}
+function getDD(ds){var cs=DB.cashSales.filter(function(c){return c.date===ds}).reduce(function(s,c){return s+(c.total!=null?c.total:c.products.reduce(function(sm,p){return sm+p.qty*p.price},0))},0);var ip=0,cr=0,pf=0;DB.cashSales.filter(function(c){return c.date===ds}).forEach(function(c){var d=c.discount||0;c.products.forEach(function(p){var cst=itemCost(p);if(cst!=null)pf+=(p.price-cst)*p.qty});pf-=d});DB.customers.forEach(function(c){c.transactions.forEach(function(t){if(t.type==='invoice'&&t.date===ds){ip+=t.paid;cr+=t.due;t.products.forEach(function(p){var cst=itemCost(p);if(cst!=null)pf+=(p.price-cst)*p.qty})}})});var pc=0,oe=0;DB.expenses.forEach(function(e){if(e.date===ds){pc+=e.purchase;oe+=e.home+e.shop}});DB.dealers.forEach(function(d){d.transactions.forEach(function(t){if(isDP(t)&&t.date===ds){pc+=t.paid}})});return{cs:cs+ip,cr:cr,pf:pf,pc:pc,oe:oe,tc:pc+oe}}
+/* ═══════════════ ডাটাবেস ═══════════════ */
+var DEF={products:[],customers:[],dealers:[],expenses:[],cashSales:[],nxtPid:1,nxtCid:1,nxtDid:1,nxtInv:1,nxtCh:1};
+
+var OLD_SYNC_URL='';
+var HAD_LOCAL=false;try{HAD_LOCAL=!!localStorage.getItem('hianDB')}catch(e){}
+function gid(i){return document.getElementById(i)}
+function lsGet(k){try{return localStorage.getItem(k)||''}catch(e){return''}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+function srvUrl(){return lsGet('hianSrv')||SYNC_URL_DEFAULT}
+function getBase(){return Number(lsGet('hianBase'))||0}
+function normDB(d){if(!d.settings||typeof d.settings!=='object'||Array.isArray(d.settings))d.settings={};if(!Array.isArray(d.products))d.products=[];if(!Array.isArray(d.customers))d.customers=[];if(!Array.isArray(d.dealers))d.dealers=[];if(!Array.isArray(d.expenses))d.expenses=[];if(!Array.isArray(d.cashSales))d.cashSales=[];if(!d.nxtPid)d.nxtPid=1;if(!d.nxtCid)d.nxtCid=1;if(!d.nxtDid)d.nxtDid=1;if(!d.nxtInv)d.nxtInv=1;if(!d.nxtCh)d.nxtCh=1;d.products.forEach(function(p){if(typeof p.stock==='undefined')p.stock=0});return d}
+function loadLocal(){try{var s=localStorage.getItem('hianDB');if(s)return normDB(JSON.parse(s))}catch(e){}return JSON.parse(JSON.stringify(DEF))}
+function saveLocal(){try{localStorage.setItem('hianDB',JSON.stringify(DB))}catch(e){}}
+function setSS(s){var b=document.getElementById('syncBtn');if(!b)return;b.className='sync-btn '+s;if(s==='syncing')b.innerHTML='<i class="fas fa-spinner"></i><span>সিঙ্ক</span>';else b.innerHTML='<i class="fas fa-cloud"></i><span>'+(s==='error'&&navigator.onLine===false?'অফলাইন':'সিঙ্ক')+'</span>'}
+function curPage(){var a=document.querySelector('.nav-i.act');return a?a.dataset.p:'dashboard'}
+function refreshCur(){applySettings();if(document.querySelector('.modal-ov.show'))return;if(curPage()==='settings'&&document.activeElement&&gid('pgSettings').contains&&gid('pgSettings').contains(document.activeElement))return;showPage(curPage())}
+var fbAuth=null,fbDb=null,fbP=null,CH=150000,KEEP_DAYS=30;
+function fbInit(){if(fbP)return fbP;
+fbP=new Promise(function(res){
+try{if(!FB_CONFIG.apiKey||typeof firebase==='undefined'){res(null);return}
+firebase.initializeApp(FB_CONFIG);fbAuth=firebase.auth();fbDb=firebase.firestore();
+fbAuth.onAuthStateChanged(function(u){res(u||null)})}catch(e){res(null)}});
+return fbP}
+function idEmail(id){return id.indexOf('@')>-1?id:id+'@'+ID_DOMAIN}
+function fbCur(){return fbAuth&&fbAuth.currentUser}
+function dayKey(t){var d=t?new Date(t):new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function fbErrIsAuth(e){var c=e&&e.code||'';return c==='permission-denied'||c==='unauthenticated'||(/^auth\//.test(c)&&c!=='auth/network-request-failed')}
+function fbLoad(u,tries){tries=tries||0;
+var ref=fbDb.collection('users').doc(u.uid);
+return ref.get().then(function(m){
+if(!m.exists||typeof m.data().n!=='number'||m.data().n<1)return {status:'ok',db:null};
+var md=m.data(),ids=[];for(var i=0;i<md.n;i++)ids.push(i);
+return Promise.all(ids.map(function(i){return ref.collection('c').doc(String(i)).get()})).then(function(ds){
+var ok=ds.every(function(d){return d.exists&&d.data().v===md.ls});
+if(!ok){if(tries<2)return fbLoad(u,tries+1);return {status:'error'}}
+return {status:'ok',db:ds.map(function(d){return d.data().t}).join('')}})})}
+function fbBackup(u,txt){
+var day=dayKey(),last=Number(lsGet('hianBkAt'))||0;
+if(lsGet('hianBkDay')===day&&Date.now()-last<3*3600*1000)return;
+var ref=fbDb.collection('users').doc(u.uid).collection('bk'),n=Math.ceil(txt.length/CH),b=fbDb.batch();
+for(var i=0;i<n;i++)b.set(ref.doc(day+'_'+i),{d:day,i:i,n:n,t:txt.substr(i*CH,CH)});
+b.commit().then(function(){
+var newDay=lsGet('hianBkDay')!==day;lsSet('hianBkDay',day);lsSet('hianBkAt',String(Date.now()));
+if(!newDay)return;
+var ck=dayKey(Date.now()-KEEP_DAYS*86400000);
+return ref.where('d','<',ck).limit(400).get().then(function(q){if(q.empty)return;var bb=fbDb.batch();q.forEach(function(d){bb.delete(d.ref)});return bb.commit()})}).catch(function(){})}
+function fbSave(u,body){
+var ref=fbDb.collection('users').doc(u.uid),txt=body.db,cp=JSON.parse(txt),ls=cp._ls||Date.now(),n=Math.max(1,Math.ceil(txt.length/CH));
+return fbDb.runTransaction(function(tx){return tx.get(ref).then(function(m){
+var md=m.exists?m.data():null;
+if(md&&typeof md.n==='number'&&md.n>0){
+if(md.ls!==body.baseLs)return {status:'conflict'};
+if(!body.force&&md.size>2000&&txt.length<md.size*0.5)return {status:'suspicious'}}
+for(var i=0;i<n;i++)tx.set(ref.collection('c').doc(String(i)),{v:ls,i:i,t:txt.substr(i*CH,CH)});
+var old=md&&typeof md.n==='number'?md.n:0;for(var j=n;j<old;j++)tx.delete(ref.collection('c').doc(String(j)));
+tx.set(ref,{ls:ls,n:n,size:txt.length,upd:Date.now()});
+return {status:'ok',ls:ls}})}).then(function(r){
+if(r.status==='ok'){fbBackup(u,txt);return r}
+if(r.status==='conflict')return fbLoad(u).then(function(d){return d.status==='ok'&&d.db?{status:'conflict',db:d.db}:{status:'error'}});
+return r})}
+function fbChgPw(u,o,n){
+var cred=firebase.auth.EmailAuthProvider.credential(u.email,o);
+return u.reauthenticateWithCredential(cred).then(function(){return u.updatePassword(n)}).then(function(){return {status:'ok',token:'fb'}},function(e){
+var c=e&&e.code||'';
+if(c==='auth/wrong-password'||c==='auth/invalid-credential'||c==='auth/invalid-login-credentials')return {status:'error',message:'বর্তমান পাসওয়ার্ড সঠিক নয়'};
+if(c==='auth/weak-password')return {status:'error',message:'নতুন পাসওয়ার্ড দুর্বল। আরও লম্বা দিন'};
+if(c==='auth/too-many-requests')return {status:'error',message:'অনেকবার ভুল হয়েছে। কিছুক্ষণ পরে চেষ্টা করুন'};
+if(c==='auth/network-request-failed')throw e;
+return {status:'error',message:'পাসওয়ার্ড বদলানো যায়নি'}})}
+function api(body){
+return fbInit().then(function(){
+var u=fbCur();if(!u)return {status:'auth'};
+var p;
+if(body.action==='load')p=fbLoad(u);
+else if(body.action==='save')p=fbSave(u,body);
+else if(body.action==='changePassword')p=fbChgPw(u,body.oldPassword,body.newPassword);
+else p=Promise.resolve({status:'error',message:'অজানা কাজ'});
+return p.catch(function(e){if(fbErrIsAuth(e))return {status:'auth'};throw e})})}
+function cloudDays(){return fbInit().then(function(){var u=fbCur();if(!u)throw new Error('auth');
+return fbDb.collection('users').doc(u.uid).collection('bk').where('i','==',0).get().then(function(q){var a=[];q.forEach(function(d){a.push(d.data().d)});return a.sort().reverse()})})}
+function cloudDay(day){return fbInit().then(function(){var u=fbCur();if(!u)throw new Error('auth');
+var ref=fbDb.collection('users').doc(u.uid).collection('bk');
+return ref.doc(day+'_0').get().then(function(f){if(!f.exists)throw new Error('none');var n=f.data().n,ids=[];for(var i=0;i<n;i++)ids.push(day+'_'+i);
+return Promise.all(ids.map(function(id){return ref.doc(id).get()})).then(function(ds){return ds.map(function(d){return d.data().t}).join('')})})})}
+function cloudBk(){
+if(navigator.onLine===false||!lsGet('hianTok')){toast('err','ইন্টারনেট দিয়ে প্রবেশ করা অবস্থায় করুন');return}
+cloudDays().then(function(days){
+if(!days.length){toast('info','এখনো ক্লাউডে কোনো দৈনিক কপি জমা হয়নি');return}
+var day=prompt('কোন তারিখের কপি ফেরাতে চান? (বর্তমান সব হিসাব ওই কপি দিয়ে বদলে যাবে)\n\nআছে: '+days.join(', ')+'\n\nতারিখ হুবহু লিখুন (যেমন '+days[0]+'):',days[0]);
+if(!day)return;day=day.trim();
+if(days.indexOf(day)<0){toast('err','এই তারিখে কপি নেই');return}
+cloudDay(day).then(function(t){var d=JSON.parse(t);if(!Array.isArray(d.products)||!Array.isArray(d.customers))throw 0;
+try{dlBackup()}catch(e){}
+DB=normDB(d);DB._dirty=true;saveLocal();syncUp(true);refreshCur();toast('ok',day+' তারিখের কপি ফেরানো হয়েছে। আগের হিসাবের একটি ফাইলও নেমেছে')}).catch(function(){toast('err','কপিটি পড়া যায়নি')})
+}).catch(function(){toast('err','কপির তালিকা আনা যায়নি')})}
+function applyServer(txt){DB=normDB(JSON.parse(txt));delete DB._dirty;lsSet('hianBase',String(DB._ls||0));saveLocal();refreshCur()}
+function sessionExpired(){lsDel('hianTok');showLogin('সেশন শেষ হয়েছে। আবার প্রবেশ করুন। আপনার ডিভাইসের হিসাব নিরাপদ আছে।')}
+function logoutLocal(msg){try{if(fbAuth)fbAuth.signOut()}catch(e){}lsDel('hianUid');lsDel('hianBkDay');lsDel('hianBkAt');lsDel('hianTok');lsDel('hianBase');lsDel('hianDB');lsDel('hianImported');lsDel('hianLv');lsDel('hianConflict');lsDel('hianOffFail');if(msg)lsSet('hianMsg',msg);location.reload()}
+var syncBusy=false,syncAgain=false;
+function syncUp(force){
+if(!lsGet('hianTok'))return;
+if(syncBusy){syncAgain=true;return}
+syncBusy=true;setSS('syncing');DB._ls=Date.now();saveLocal();
+var cp=Object.assign({},DB);delete cp._dirty;
+api({action:'save',db:JSON.stringify(cp),baseLs:getBase(),force:!!force}).then(function(d){
+if(d.status==='ok'){lsSet('hianBase',String(d.ls||cp._ls));delete DB._dirty;saveLocal();setSS('synced')}
+else if(d.status==='conflict'){lsSet('hianConflict',JSON.stringify(cp));applyServer(d.db);setSS('synced');toast('warn','অন্য ডিভাইসে নতুন পরিবর্তন ছিল, তাই সেটাই নেওয়া হয়েছে। আপনার এই পরিবর্তনের কপি রাখা আছে।')}
+else if(d.status==='suspicious'){setSS('error');if(confirm('নতুন ডেটা আগের চেয়ে অনেক ছোট। সত্যিই সংরক্ষণ করবেন?'))setTimeout(function(){syncUp(true)},0)}
+else if(d.status==='auth'){sessionExpired()}
+else setSS('error')
+}).catch(function(){setSS('error')}).then(function(){syncBusy=false;if(syncAgain){syncAgain=false;syncUp()}})}
+function importOld(cb){if(!OLD_SYNC_URL){cb();return}fetch(OLD_SYNC_URL+'?_t='+Date.now()).then(function(r){return r.json()}).then(function(d){if(d&&d.status==='ok'&&d.db){try{DB=normDB(JSON.parse(d.db))}catch(e){}}cb()}).catch(function(){cb()})}
+function pullServer(manual,cb){
+if(!lsGet('hianTok')||syncBusy){if(cb)cb();return}
+var fin=function(){if(cb)cb()};
+setSS('syncing');
+api({action:'load'}).then(function(d){
+if(d.status==='auth'){sessionExpired();return}
+if(d.status!=='ok'){setSS('error');fin();return}
+if(!d.db){
+var go=function(){DB._dirty=true;syncUp();fin()};
+if(!HAD_LOCAL&&!lsGet('hianImported')){importOld(function(){lsSet('hianImported','1');go()})}else go();
+return}
+var c=JSON.parse(d.db),base=getBase();
+if(c._ls===base){if(DB._dirty)syncUp();else{setSS('synced');if(manual)toast('ok','ডেটা আপ-টু-ডেট আছে')}}
+else{
+if(DB._dirty||(base===0&&HAD_LOCAL))lsSet('hianConflict',JSON.stringify(DB));
+applyServer(d.db);setSS('synced');
+if(DB._dirty)toast('warn','অন্য ডিভাইসে নতুন পরিবর্তন ছিল, তাই সেটাই নেওয়া হয়েছে। আপনার পরিবর্তনের কপি রাখা আছে।');
+else if(manual)toast('ok','ক্লাউড থেকে ডেটা আপডেট হয়েছে')}
+fin()
+}).catch(function(){setSS('error');fin()})}
+function manualSync(){if(DB._dirty){syncUp();toast('info','ক্লাউডে আপলোড হচ্ছে')}else pullServer(true)}
+var svT=0;
+function saveDB(){DB._dirty=true;saveLocal();clearTimeout(svT);svT=setTimeout(function(){syncUp()},2500)}
+window.addEventListener('pagehide',function(){if(DB._dirty){clearTimeout(svT);syncUp()}});
+var DB=loadLocal();
+
+/* ═══════════════ লগইন ═══════════════ */
+function showLogin(msg){
+gid('loginOv').style.display='flex';
+gid('lgEm').value=lsGet('hianUser');
+gid('lgPw').value='';gid('lgPw').type='password';gid('lgEye').textContent='দেখুন';
+gid('lgErr').textContent=msg||'';
+try{if(navigator.credentials&&window.PasswordCredential){navigator.credentials.get({password:true,mediation:'silent'}).then(function(c){if(c&&c.password&&!gid('lgPw').value){if(!gid('lgEm').value)gid('lgEm').value=c.id;gid('lgPw').value=c.password}}).catch(function(){})}}catch(e){}
+setTimeout(function(){var f=gid(lsGet('hianUser')?'lgPw':'lgEm');if(f)f.focus()},50)}
+function togglePw(){var i=gid('lgPw'),b=gid('lgEye'),show=i.type==='password';i.type=show?'text':'password';b.textContent=show?'লুকান':'দেখুন';b.setAttribute('aria-label',show?'পাসওয়ার্ড লুকান':'পাসওয়ার্ড দেখুন')}
+
+/* ── অফলাইন লগইনের জন্য এই ডিভাইসে পাসওয়ার্ডের হ্যাশ (আসল পাসওয়ার্ড কোথাও জমা থাকে না) ── */
+var memCred=null,relogBusy=false;
+function b64(buf){var a=new Uint8Array(buf),t='';for(var i=0;i<a.length;i++)t+=String.fromCharCode(a[i]);return btoa(t)}
+function jsHash(str){var h1=0xdeadbeef,h2=0x41c6ce57;for(var r=0;r<20000;r++){for(var i=0;i<str.length;i++){var ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909)}return (h2>>>0).toString(16)+(h1>>>0).toString(16)}
+function hasSubtle(){return typeof crypto!=='undefined'&&crypto&&crypto.subtle&&typeof TextEncoder!=='undefined'}
+function pwHash(pw,salt,mode){
+if(mode==='j'||!hasSubtle())return Promise.resolve('j:'+jsHash(salt+'|'+pw));
+var enc=new TextEncoder();
+return crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']).then(function(k){return crypto.subtle.deriveBits({name:'PBKDF2',salt:enc.encode(salt),iterations:100000,hash:'SHA-256'},k,256)}).then(function(b){return 'p:'+b64(b)})}
+function newSalt(){try{var a=new Uint8Array(16);crypto.getRandomValues(a);return b64(a)}catch(e){return Math.random().toString(36).slice(2)+Date.now().toString(36)}}
+function saveVerifier(em,pw){var salt=newSalt();return pwHash(pw,salt).then(function(h){lsSet('hianLv',JSON.stringify({e:em,s:salt,h:h}))}).catch(function(){})}
+function checkVerifier(em,pw){var v=null;try{v=JSON.parse(lsGet('hianLv')||'null')}catch(e){}
+if(!v||v.e!==em||!v.h)return Promise.resolve(false);
+return pwHash(pw,v.s,v.h.charAt(0)).then(function(h){return h===v.h}).catch(function(){return false})}
+function offBlocked(){var f=null;try{f=JSON.parse(lsGet('hianOffFail')||'null')}catch(e){}return !!(f&&f.n>=5&&Date.now()-f.t<900000)}
+function offFail(){var f=null;try{f=JSON.parse(lsGet('hianOffFail')||'null')}catch(e){}f=(f&&Date.now()-f.t<900000)?{n:f.n+1,t:Date.now()}:{n:1,t:Date.now()};lsSet('hianOffFail',JSON.stringify(f))}
+function netLogin(em,pw){
+if(!FB_CONFIG.apiKey)return Promise.resolve({status:'error',message:'অ্যাপে ফায়ারবেসের কনফিগ বসানো হয়নি'});
+return fbInit().then(function(){
+if(!fbAuth)throw new Error('nofb');
+return fbAuth.signInWithEmailAndPassword(idEmail(em),pw).then(function(){return {status:'ok',token:'fb'}},function(e){
+var c=e&&e.code||'';
+if(c==='auth/network-request-failed')throw e;
+if(c==='auth/too-many-requests')return {status:'error',message:'অনেকবার ভুল হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন'};
+if(c==='auth/user-disabled')return {status:'error',message:'এই আইডি বন্ধ আছে। এডমিনের সাথে যোগাযোগ করুন'};
+if(c==='auth/invalid-email')return {status:'error',message:'আইডিতে শুধু ইংরেজি অক্ষর, সংখ্যা, ডট, - ও _ চলবে'};
+return {status:'error',message:'আইডি বা পাসওয়ার্ড সঠিক নয়'}})})}
+function offlineLogin(em,pw,cb){
+if(!lsGet('hianDB')||!getBase()||!lsGet('hianLv'))return cb(false,'সার্ভারে যোগাযোগ হয়নি। এই ডিভাইসে অফলাইনে ঢুকতে হলে আগে একবার ইন্টারনেট দিয়ে প্রবেশ করতে হবে');
+if(offBlocked())return cb(false,'অনেকবার ভুল হয়েছে। ১৫ মিনিট পরে চেষ্টা করুন');
+checkVerifier(em,pw).then(function(ok){
+if(!ok){offFail();return cb(false,'আইডি বা পাসওয়ার্ড সঠিক নয়')}
+lsDel('hianOffFail');lsSet('hianUser',em);memCred={email:em,pw:pw};cb(true)})}
+function onLoginOk(em,pw,tok){
+var u=fbCur(),uid=u?u.uid:'',prev=lsGet('hianUid');
+if(prev&&uid&&prev!==uid&&lsGet('hianDB')){
+/* এই ডিভাইসে আগে অন্য আইডির হিসাব ছিল: মিশতে দেওয়া হবে না */
+if(DB._dirty){try{dlBackup()}catch(e){}}
+['hianDB','hianBase','hianImported','hianLv','hianConflict','hianOffFail','hianPhoto','hianBkDay','hianBkAt'].forEach(lsDel);
+lsSet('hianUid',uid);lsSet('hianTok',tok);lsSet('hianUser',em);
+saveVerifier(em,pw).then(function(){location.reload()});return}
+if(uid)lsSet('hianUid',uid);
+lsSet('hianTok',tok);lsSet('hianUser',em);lsDel('hianOffFail');saveVerifier(em,pw);memCred=null;
+try{if(window.PasswordCredential&&navigator.credentials&&navigator.credentials.store)navigator.credentials.store(new PasswordCredential({id:em,password:pw,name:em}))}catch(e){}
+gid('lgPw').value='';gid('loginOv').style.display='none';startApp()}
+function doLogin(){
+var em=gid('lgEm').value.trim().toLowerCase(),pw=gid('lgPw').value,err=gid('lgErr'),btn=gid('lgBtn');
+if(!em||!pw){err.textContent='আইডি ও পাসওয়ার্ড দিন';return}
+err.textContent='';btn.disabled=true;btn.textContent='প্রবেশ হচ্ছে...';
+var done=function(){btn.disabled=false;btn.textContent='প্রবেশ করুন'};
+var offline=function(){offlineLogin(em,pw,function(ok,msg){done();if(ok){gid('lgPw').value='';gid('loginOv').style.display='none';startApp();setSS('error');toast('info','অফলাইনে প্রবেশ করেছেন। ইন্টারনেট এলে হিসাব নিজে সিঙ্ক হবে')}else err.textContent=msg})};
+if(!FB_CONFIG.apiKey){done();err.textContent='অ্যাপে ফায়ারবেসের কনফিগ বসানো হয়নি';return}
+if(navigator.onLine===false){offline();return}
+netLogin(em,pw).then(function(d){done();if(d.status==='ok')onLoginOk(em,pw,d.token);else err.textContent=d.message||'প্রবেশ করা যায়নি'},function(){offline()})}
+function tryRelogin(){
+if(lsGet('hianTok')||!memCred||navigator.onLine===false||relogBusy)return;
+relogBusy=true;
+netLogin(memCred.email,memCred.pw).then(function(d){relogBusy=false;
+if(d.status==='ok'){var c=memCred;lsSet('hianTok',d.token);saveVerifier(c.email,c.pw);memCred=null;toast('ok','অনলাইনে ফিরেছেন, সিঙ্ক হচ্ছে');if(DB._dirty)syncUp();else pullServer(false)}
+else if(/সঠিক নয়/.test(d.message||'')){memCred=null;showLogin('পাসওয়ার্ড বদলেছে। নতুন পাসওয়ার্ড দিয়ে প্রবেশ করুন। আপনার ডিভাইসের হিসাব নিরাপদ আছে।')}
+},function(){relogBusy=false})}
+function lockApp(){lsDel('hianTok');memCred=null;location.reload()}
+function startApp(){
+applySettings();
+if(navigator.onLine===false)toast('info','অফলাইন আছেন। কাজ করুন, নেট এলে নিজে সিঙ্ক হবে');
+var fresh=getBase()===0&&!HAD_LOCAL;
+if(!fresh)renderDash();
+pullServer(false,function(){if(fresh)renderDash()})}
+function bootApp(){
+if(!lsGet('hianTok')){var m=lsGet('hianMsg');lsDel('hianMsg');showLogin(m);return}
+startApp()}
+setInterval(function(){tryRelogin();if(!lsGet('hianTok')||syncBusy)return;if(DB._dirty)syncUp();else if(!document.querySelector('.modal-ov.show'))pullServer(false)},45000);
+window.addEventListener('offline',function(){setSS('error')});
+window.addEventListener('online',function(){tryRelogin();if(lsGet('hianTok')){if(DB._dirty)syncUp();else pullServer(false)}});
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&lsGet('hianTok')&&!DB._dirty&&!document.querySelector('.modal-ov.show'))pullServer(false)});
+
+
+/* ═══════════════ সেটিং ═══════════════ */
+var HAS_DEF_PHOTO=false;
+var SET_DEF={owner:'',btn:'#14301F',side:'#14301F',c1:'#1D4E9E',c2:'#0F6E66',btnSize:'m',txtSize:'m',shop:'আমার দোকান',sub:'ম্যানেজমেন্ট সিস্টেম',logo:'দো',showPhoto:false,photoY:30};
+var PRESETS=[['ধানক্ষেত সবুজ','#14301F'],['নদীর নীল','#1D4E9E'],['গাঢ় টিল','#0F6E66'],['মাটির খয়েরি','#6B3F1D'],['আঙুরি বেগুনি','#5B2A86'],['মেরুন','#8C1D2E'],['কালচে ধূসর','#2B2F36']];
+function getSet(){var s=(DB&&DB.settings)||{},o={};for(var k in SET_DEF)o[k]=(s[k]===undefined||s[k]===null||s[k]==='')?SET_DEF[k]:s[k];return o}
+function hx(c){c=String(c||'').replace('#','');if(c.length===3)c=c.replace(/./g,'$&$&');return /^[0-9a-f]{6}$/i.test(c)?[parseInt(c.substr(0,2),16),parseInt(c.substr(2,2),16),parseInt(c.substr(4,2),16)]:[20,48,31]}
+function toHex(a){return '#'+a.map(function(v){v=Math.max(0,Math.min(255,Math.round(v)));return (v<16?'0':'')+v.toString(16)}).join('')}
+function mixC(a,b,t){var x=hx(a),y=hx(b);return toHex([x[0]+(y[0]-x[0])*t,x[1]+(y[1]-x[1])*t,x[2]+(y[2]-x[2])*t])}
+function lumC(c){var x=hx(c).map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*x[0]+.7152*x[1]+.0722*x[2]}
+function onC(c){return lumC(c)>.2?'#14201A':'#ffffff'}
+function applySettings(){
+var S=getSet(),btn=S.btn,bt=onC(btn),bh=lumC(btn)>.2?mixC(btn,'#000000',.14):mixC(btn,'#ffffff',.16);
+var side=S.side,st=onC(side),dark=st==='#ffffff';
+var sh=dark?mixC(side,'#ffffff',.07):mixC(side,'#000000',.06),sa=dark?mixC(side,'#ffffff',.16):mixC(side,'#000000',.12),sb=dark?mixC(side,'#ffffff',.12):mixC(side,'#000000',.14),stx=dark?mixC(side,'#ffffff',.68):mixC(side,'#000000',.62);
+var css=':root{--btn:'+btn+';--btn-t:'+bt+';--btn-h:'+bh+';--sb:'+side+';--sb-h:'+sh+';--sb-a:'+sa+';--sb-b:'+sb+';--sb-t:'+stx+';--sb-ta:'+st+'}';
+css+='.dx-btn,.lg-btn,.mbtn-gr,.mbtn-b,.pl-add,.action-btns button[style*="--blu"],.action-btns button[style*="--grn"]{background:var(--btn)!important;border-color:var(--btn)!important;color:var(--btn-t)!important}';
+css+='.dx-btn:hover,.lg-btn:hover,.mbtn-gr:hover,.mbtn-b:hover,.pl-add:hover{background:var(--btn-h)!important;border-color:var(--btn-h)!important;filter:none!important}';
+css+='.sb-brand,.sb-nm,.nav-i:hover,.nav-i.act{color:'+st+'}.nav-lbl{color:var(--sb-t)!important}.sb-tools button:hover{color:'+st+'}';
+if(side.toLowerCase()!==SET_DEF.side.toLowerCase()){var lg=dark?mixC(side,'#ffffff',.28):mixC(side,'#000000',.22);css+='.sb-logo,.sb-av{background:'+lg+'!important;color:'+onC(lg)+'}'}
+css+='.dx-tag.red{--c:'+S.c1+';color:'+onC(S.c1)+'}.dx-tag.amb{--c:'+S.c2+';color:'+onC(S.c2)+'}';
+var bs=S.btnSize==='s'?['5px 10px','11.5px']:S.btnSize==='l'?['12px 22px','15.5px']:null;
+if(bs)css+='.dx-btn,.mbtn,.action-btns button,.pl-add,.lg-btn{padding:'+bs[0]+'!important;font-size:'+bs[1]+'!important}';
+var z=S.txtSize==='s'?.9:S.txtSize==='l'?1.12:1;
+if(z!==1)css+='.page,.modal{zoom:'+z+'}';
+var ph=lsGet('hianPhoto');
+if(S.showPhoto===false||(!ph&&!HAS_DEF_PHOTO))css+='.dx-grid .dx-photo{display:none!important}.dx-grid{grid-template-columns:1fr!important}';
+else{if(ph&&/^data:image\//.test(ph))css+='.dx-photo{background-image:url("'+ph+'")!important}';css+='.dx-photo{background-position:50% '+(Number(S.photoY)||30)+'%!important}'}
+var el=gid('setStyle');if(!el){el=document.createElement('style');el.id='setStyle';(document.head||document.body).appendChild(el)}
+el.textContent=css;
+var q=function(sel,t){var e=document.querySelector(sel);if(e)e.textContent=t};
+var em=lsGet('hianUser')||'',nm=S.owner||em||'ব্যবহারকারী';
+q('.sb-brand',S.shop);q('.sb-sub',S.sub);q('.sb-logo',S.logo);q('.lg-t',S.shop);q('.sb-nm',nm);q('.sb-av',Array.from(nm)[0]||'ব');document.title=S.shop}
+var setTimer=0;
+function queueSave(){clearTimeout(setTimer);setTimer=setTimeout(function(){saveDB()},600)}
+function setSet(k,v,rerender){DB.settings=DB.settings||{};DB.settings[k]=v;applySettings();queueSave();if(rerender)initSettings()}
+function swatches(k,cur){return '<div class="st-sw">'+PRESETS.map(function(x){return '<button type="button" class="'+(String(cur).toLowerCase()===x[1].toLowerCase()?'on':'')+'" style="background:'+x[1]+'" aria-label="'+x[0]+'" aria-pressed="'+(String(cur).toLowerCase()===x[1].toLowerCase())+'" title="'+x[0]+'" onclick="setSet(\''+k+'\',\''+x[1]+'\',true)"></button>'}).join('')+'</div>'}
+function seg(k,cur,opts){return '<div class="st-seg" role="group">'+opts.map(function(o){return '<button type="button" class="'+(cur===o[0]?'on':'')+'" aria-pressed="'+(cur===o[0])+'" onclick="setSet(\''+k+'\',\''+o[0]+'\',true)">'+o[1]+'</button>'}).join('')+'</div>'}
+function initSettings(){
+var S=getSet(),email=lsGet('hianUser')||'',hasPh=!!lsGet('hianPhoto');
+var h='<div class="st"><div class="st-grid"><div class="st-col">';
+h+='<section class="st-card"><h3>দোকানের পরিচয়</h3><p class="st-note">সাইডবার ও লগইন পর্দায় এই নাম দেখাবে।</p><div class="fg"><label for="stOwner">আপনার নাম</label><input id="stOwner" type="text" maxlength="40" value="'+esc(S.owner)+'" oninput="setSet(\'owner\',this.value.trim())"></div><div class="fg"><label for="stShop">দোকানের নাম</label><input id="stShop" type="text" maxlength="40" value="'+esc(S.shop)+'" oninput="setSet(\'shop\',this.value.trim())"></div><div class="fg"><label for="stSub">নামের নিচের লেখা</label><input id="stSub" type="text" maxlength="40" value="'+esc(S.sub)+'" oninput="setSet(\'sub\',this.value.trim())"></div><div class="fg"><label for="stLogo">লোগোর অক্ষর (সর্বোচ্চ ৩টি)</label><input id="stLogo" type="text" maxlength="3" value="'+esc(S.logo)+'" oninput="setSet(\'logo\',this.value.trim())"></div></section>';
+h+='<section class="st-card"><h3>রং</h3><p class="st-note">বেছে নিন, সাথে সাথে পুরো অ্যাপে বদলে যাবে।</p>';
+h+='<div class="st-row"><span class="st-lbl">বাটনের রং</span>'+swatches('btn',S.btn)+'<input type="color" aria-label="নিজের পছন্দের বাটনের রং" value="'+S.btn+'" oninput="setSet(\'btn\',this.value)"></div>';
+h+='<div class="st-row"><span class="st-lbl">সাইডবারের রং</span>'+swatches('side',S.side)+'<input type="color" aria-label="নিজের পছন্দের সাইডবারের রং" value="'+S.side+'" oninput="setSet(\'side\',this.value)"></div>';
+h+='<div class="st-row"><span class="st-lbl">বাকির কার্ড ১</span><input type="color" aria-label="গ্রাহকের বাকি কার্ডের রং" value="'+S.c1+'" oninput="setSet(\'c1\',this.value)"><span class="st-note" style="margin:0">গ্রাহকের বাকি</span></div>';
+h+='<div class="st-row"><span class="st-lbl">বাকির কার্ড ২</span><input type="color" aria-label="ডিলার বাকি কার্ডের রং" value="'+S.c2+'" oninput="setSet(\'c2\',this.value)"><span class="st-note" style="margin:0">ডিলার বাকি</span></div>';
+h+='<div class="dx"><div class="st-prev"><button type="button" class="dx-btn" tabindex="-1">নমুনা বাটন</button><button type="button" class="dx-btn" tabindex="-1">নগদ বিক্রি</button></div></div></section>';
+h+='<section class="st-card"><h3>সাইজ</h3><div class="st-row"><span class="st-lbl">বাটনের সাইজ</span>'+seg('btnSize',S.btnSize,[['s','ছোট'],['m','মাঝারি'],['l','বড়']])+'</div><div class="st-row"><span class="st-lbl">লেখার সাইজ</span>'+seg('txtSize',S.txtSize,[['s','ছোট'],['m','মাঝারি'],['l','বড়']])+'</div><p class="st-note">লেখার সাইজ বদলালে পাতার ভেতরের সব লেখা ছোট বা বড় হবে।</p></section>';
+h+='</div><div class="st-col">';
+h+='<section class="st-card"><h3>ড্যাশবোর্ডের ছবি</h3><p class="st-note">ছবি শুধু এই ডিভাইসে থাকে। অন্য ডিভাইসে আলাদা করে বসাতে হবে।</p><figure class="dx-photo" style="min-height:0;height:170px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:#5d6f61;font-size:13px" role="img" aria-label="ছবির নমুনা">'+(!hasPh&&!HAS_DEF_PHOTO?'এখনো কোনো ছবি নেই':'')+'</figure><div class="st-btns" style="margin-bottom:12px"><button type="button" class="st-btn" onclick="gid(\'stPhotoF\').click()"><i class="fas fa-image"></i> ছবি বদলান</button>'+(hasPh?'<button type="button" class="st-btn" onclick="resetPhoto()">'+(HAS_DEF_PHOTO?'আগের ছবি ফেরান':'ছবি সরান')+'</button>':'')+'</div><input type="file" id="stPhotoF" accept="image/*" style="display:none" onchange="pickPhoto(this)"><div class="st-row"><span class="st-lbl">ছবি দেখান</span>'+seg('showPhoto',S.showPhoto?'1':'0',[['1','হ্যাঁ'],['0','না']]).replace(/setSet\(\'showPhoto\',\'1\'/,"setSet('showPhoto',true").replace(/setSet\(\'showPhoto\',\'0\'/,"setSet('showPhoto',false")+'</div><div class="st-row"><span class="st-lbl">ছবির ফোকাস</span>'+seg('photoY',String(S.photoY),[['10','একদম উপরে'],['30','একটু উপরে'],['50','মাঝে'],['85','নিচে']])+'</div></section>';
+h+='<section class="st-card"><h3>পাসওয়ার্ড বদলান</h3><p class="st-note">'+(email?'আপনার আইডি: <b>'+esc(email)+'</b>. ':'')+'বদলালে অন্য ডিভাইসে নতুন পাসওয়ার্ড দিয়ে আবার ঢুকতে হবে। ইন্টারনেট লাগবে।</p><form onsubmit="chgPw();return false"><div class="fg"><label for="stOld">বর্তমান পাসওয়ার্ড</label><div class="st-pwwrap"><input id="stOld" type="password" autocomplete="current-password"><button type="button" class="lg-eye" id="stEye" onclick="togglePw2()">দেখুন</button></div></div><div class="fg"><label for="stNew">নতুন পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label><input id="stNew" type="password" autocomplete="new-password"></div><div class="fg"><label for="stNew2">নতুন পাসওয়ার্ড আবার লিখুন</label><input id="stNew2" type="password" autocomplete="new-password"></div><div class="st-msg" id="stPwMsg" role="alert"></div><button type="submit" class="dx-btn" id="stPwBtn">পাসওয়ার্ড বদলান</button></form></section>';
+h+='<section class="st-card"><h3>ডিভাইস ও ব্যাকআপ</h3><div class="st-btns"><button type="button" class="st-btn" onclick="dlBackup()"><i class="fas fa-download"></i> ব্যাকআপ নামান</button><button type="button" class="st-btn" onclick="cloudBk()"><i class="fas fa-clock-rotate-left"></i> ক্লাউডের দৈনিক কপি থেকে ফেরান</button><button type="button" class="st-btn" onclick="resetSettings()"><i class="fas fa-rotate-left"></i> সেটিং আগের মতো করুন</button><button type="button" class="st-btn dg" onclick="wipeDevice()"><i class="fas fa-trash"></i> এই ডিভাইস থেকে হিসাব মুছুন</button></div><p class="st-note" style="margin-top:10px">হিসাব মুছলে শুধু এই ডিভাইস থেকে যাবে, ক্লাউডে থাকবে। ক্লাউড প্রতিদিনের একটা কপি ৩০ দিন রাখে। মোছার আগে একটা ব্যাকআপ ফাইলও নামবে।</p></section>';
+h+='</div></div></div>';
+gid('pgSettings').innerHTML=h}
+function togglePw2(){var ids=['stOld','stNew','stNew2'],b=gid('stEye'),show=gid('stOld').type==='password';ids.forEach(function(i){gid(i).type=show?'text':'password'});b.textContent=show?'লুকান':'দেখুন'}
+function stMsg(t,ok){var m=gid('stPwMsg');m.textContent=t;m.className='st-msg '+(ok?'ok':'err')}
+function chgPw(){
+var o=gid('stOld').value,n=gid('stNew').value,n2=gid('stNew2').value,btn=gid('stPwBtn');
+if(!o||!n||!n2){stMsg('সবগুলো ঘর পূরণ করুন');return}
+if(n.length<6){stMsg('নতুন পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে');return}
+if(n!==n2){stMsg('নতুন পাসওয়ার্ড দুই জায়গায় মেলেনি');return}
+if(n===o){stMsg('নতুন পাসওয়ার্ড বর্তমানটার থেকে আলাদা হতে হবে');return}
+if(!lsGet('hianTok')||navigator.onLine===false){stMsg('ইন্টারনেট দিয়ে প্রবেশ করা অবস্থায় পাসওয়ার্ড বদলান');return}
+btn.disabled=true;stMsg('বদলানো হচ্ছে...',true);
+api({action:'changePassword',oldPassword:o,newPassword:n}).then(function(d){btn.disabled=false;
+if(d.status==='ok'){lsSet('hianTok',d.token);saveVerifier(lsGet('hianUser'),n);gid('stOld').value='';gid('stNew').value='';gid('stNew2').value='';stMsg('পাসওয়ার্ড বদলেছে। এখন থেকে নতুনটা দিয়ে ঢুকবেন।',true);toast('ok','পাসওয়ার্ড বদলানো হয়েছে')}
+else if(d.status==='auth'){sessionExpired()}
+else if(/অজানা/.test(d.message||''))stMsg('সার্ভার এখনো আপডেট করা হয়নি। Code.gs নতুন করে Deploy করুন।');
+else stMsg(d.message||'পাসওয়ার্ড বদলানো যায়নি')
+}).catch(function(){btn.disabled=false;stMsg('সার্ভারে যোগাযোগ হয়নি। ইন্টারনেট দেখে আবার চেষ্টা করুন')})}
+function pickPhoto(inp){var f=inp.files&&inp.files[0];if(!f)return;
+if(!/^image\//.test(f.type)){toast('err','ছবির ফাইল বেছে নিন');inp.value='';return}
+var fr=new FileReader();fr.onload=function(){var img=new Image();img.onload=function(){
+var M=900,k=Math.min(1,M/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*k));c.height=Math.max(1,Math.round(img.height*k));c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+var d=c.toDataURL('image/jpeg',.8);
+try{localStorage.setItem('hianPhoto',d)}catch(e){toast('err','ছবি রাখার জায়গা নেই। ছোট ছবি দিন');return}
+if(getSet().showPhoto===false){DB.settings.showPhoto=true;queueSave()}
+applySettings();initSettings();toast('ok','ছবি বসানো হয়েছে')};
+img.onerror=function(){toast('err','ছবিটি খোলা যায়নি')};img.src=fr.result};
+fr.readAsDataURL(f);inp.value=''}
+function resetPhoto(){lsDel('hianPhoto');applySettings();initSettings();toast('ok',HAS_DEF_PHOTO?'আগের ছবি ফেরানো হয়েছে':'ছবি সরানো হয়েছে')}
+function resetSettings(){if(!confirm('রং, সাইজ, নাম ও ছবির সব সেটিং আগের মতো হয়ে যাবে। হিসাব বদলাবে না। করবেন?'))return;DB.settings={};lsDel('hianPhoto');applySettings();saveDB();initSettings();toast('ok','সেটিং আগের মতো করা হয়েছে')}
+function wipeDevice(){
+if(!confirm('এই ডিভাইস থেকে সব হিসাব মুছে যাবে। ক্লাউডে হিসাব থাকবে, আবার ঢুকলেই ফিরে আসবে।\n\nআগে একটা ব্যাকআপ ফাইল নামবে। এগিয়ে যাবেন?'))return;
+if(DB._dirty&&!confirm('কিছু পরিবর্তন এখনো ক্লাউডে যায়নি। মুছলে সেগুলো শুধু ব্যাকআপ ফাইলে থাকবে। তবুও মুছবেন?'))return;
+dlBackup();setTimeout(function(){logoutLocal('')},700)}
+
+/* ═══════════════ ব্যাকআপ ═══════════════ */
+function dlBackup(){var cp=Object.assign({},DB);delete cp._dirty;var b=new Blob([JSON.stringify(cp)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='hisab-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);toast('ok','ব্যাকআপ ফাইল নামানো হয়েছে')}
+function rsBackup(inp){var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!Array.isArray(d.products)||!Array.isArray(d.customers)||!Array.isArray(d.dealers))throw 0;if(!confirm('বর্তমান সব ডেটা এই ব্যাকআপ দিয়ে বদলে যাবে। নিশ্চিত?')){inp.value='';return}DB=normDB(d);DB._dirty=true;saveLocal();syncUp(true);refreshCur();toast('ok','ব্যাকআপ থেকে ফেরানো হয়েছে')}catch(e){toast('err','ফাইলটি সঠিক ব্যাকআপ নয়')}inp.value=''};r.readAsText(f)}
+
+/* ═══════════════ ইউআই হেল্পার ═══════════════ */
+function updateDT(){document.getElementById('dtDate').textContent=autoDateFull();document.getElementById('dtTime').textContent=autoTime()}
+updateDT();setInterval(updateDT,10000);
+function toast(t,m){var b=document.getElementById('toastBox'),e=document.createElement('div');e.className='toast';var ic={ok:'fa-check',info:'fa-info',warn:'fa-exclamation',err:'fa-times'};e.innerHTML='<div class="t-ic '+t+'"><i class="fas '+ic[t]+'"></i></div><span>'+esc(m)+'</span>';b.appendChild(e);setTimeout(function(){e.classList.add('out');setTimeout(function(){e.remove()},250)},3000)}
+function openM(id){document.getElementById(id).classList.add('show');document.body.style.overflow='hidden'}
+function closeM(id){document.getElementById(id).classList.remove('show');document.body.style.overflow=''}
+function setM(id,h){document.getElementById(id+'Inner').innerHTML=h}
+function sCL(i,d){var inp=document.getElementById(i);if(inp)inp.addEventListener('blur',function(){setTimeout(function(){var dd=document.getElementById(d);if(dd)dd.style.display='none'},150)})}
+document.getElementById('mainModal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeM('mainModal')});
+document.getElementById('subModal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeM('subModal')});
+document.getElementById('sub2Modal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeM('sub2Modal')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeM('sub2Modal');closeM('subModal');closeM('mainModal')}});
+/* ড্রপডাউনে ক্লিক করলে ইনপুট ফোকাস না হারায়, যাতে তালিকা বন্ধ হওয়ার আগেই পণ্য যোগ হয় */
+document.addEventListener('mousedown',function(e){if(e.target.closest&&e.target.closest('.prod-dropdown,.cust-dd'))e.preventDefault()});
+
+/* ═══════════════ নেভিগেশন ═══════════════ */
+var PT={dashboard:'ড্যাশবোর্ড',products:'পণ্য তালিকা',stocks:'পণ্য স্টক',customers:'গ্রাহক তালিকা',dealers:'কোম্পানি/ডিলার',summary:'হিসাব সারাংশ',settings:'সেটিং'};
+function showPage(p){document.querySelectorAll('.page').forEach(function(e){e.classList.remove('act')});document.querySelectorAll('.nav-i').forEach(function(e){e.classList.remove('act')});document.getElementById('pg'+p.charAt(0).toUpperCase()+p.slice(1)).classList.add('act');document.querySelector('.nav-i[data-p="'+p+'"]').classList.add('act');document.getElementById('pageTitle').textContent=PT[p];if(p==='dashboard')renderDash();else if(p==='products')initPP();else if(p==='stocks')initSP();else if(p==='customers')initCP();else if(p==='dealers')initDP();else if(p==='summary')initSUM();else if(p==='settings')initSettings();document.getElementById('sidebar').classList.remove('open');document.getElementById('sbOv').style.display='none'}
+document.querySelectorAll('.nav-i').forEach(function(el){function go(){showPage(el.dataset.p)}el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+document.getElementById('hamb').addEventListener('click',function(){var s=document.getElementById('sidebar'),o=document.getElementById('sbOv');s.classList.toggle('open');o.style.display=s.classList.contains('open')?'block':'none'});
+document.getElementById('sbOv').addEventListener('click',function(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sbOv').style.display='none'});
+document.getElementById('notifBtn').addEventListener('click',function(){toast('info','কোনো নতুন নোটিফিকেশন নেই');document.querySelector('.nd').style.display='none'});
+document.getElementById('loBtn').addEventListener('click',function(){if(DB._dirty&&!confirm('কিছু পরিবর্তন এখনো ক্লাউডে যায়নি। লগআউট করলেও হিসাব এই ডিভাইসে থাকবে, আবার ঢুকলে ক্লাউডে যাবে। লগআউট করবেন?'))return;lockApp()});
+
+/* ═══════════════ ড্যাশবোর্ড ═══════════════ */
+function dxM(n){return '৳ '+toBn(Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2}))}
+function dxLine(l,v,o){o=o||{};var open=o.click?'<button type="button" class="dx-line'+(o.cls?' '+o.cls:'')+'" onclick="'+o.click+'">':'<div class="dx-line'+(o.cls?' '+o.cls:'')+'">';var close=o.click?'</button>':'</div>';return open+'<span class="dx-l">'+l+'</span><i class="dx-fill"></i><span class="dx-v">'+v+'</span>'+close}
+function dxTag(c,t,v,sub,pg,ic){return '<button type="button" class="dx-tag '+c+'" onclick="showPage(\''+pg+'\')"><i class="fas '+ic+' dx-tag-ic" aria-hidden="true"></i><span class="dx-tag-t">'+t+'</span><span class="dx-tag-v">'+v+'</span><span class="dx-tag-s">'+sub+'</span></button>'}
+function renderDash(){
+var td=autoDate(),e=getTE(),dt=new Date();
+var cash=getCS(td),cr=getCRS(td),tP=getTP(),tdue=totalAllDue(),tdd=totalDD(),tc=getTTC();
+var dp=Math.max(0,tc-(e.purchase+e.home+e.shop));
+var WD=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+var pc=tP>=0?'var(--c-grn)':'var(--c-red)';
+var h='<div class="dx"><div class="dx-grid"><div class="dx-main"><section class="dx-sheet" aria-label="আজকের হিসাব"><div class="dx-bands" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="dx-in">';
+h+='<div class="dx-head"><h2 class="dx-date">'+toBn(dt.getDate())+' '+MONTHS[dt.getMonth()]+'</h2><p class="dx-year">'+toBn(dt.getFullYear())+', '+WD[dt.getDay()]+'</p></div>';
+h+='<div class="dx-cols"><div class="dx-col"><h3>বিক্রি</h3>'+dxLine('নগদ',dxM(cash))+dxLine('বাকি',dxM(cr),{click:'openCSV()'})+dxLine('মোট বিক্রি',dxM(cash+cr),{cls:'tot'})+'</div>';
+h+='<div class="dx-col"><h3>খরচ</h3>'+dxLine('পণ্য ক্রয়',dxM(e.purchase))+dxLine('ডিলার পেমেন্ট',dxM(dp))+dxLine('বাড়ি',dxM(e.home))+dxLine('দোকান',dxM(e.shop))+dxLine('মোট খরচ',dxM(tc),{cls:'tot'})+'</div></div>';
+h+='<div class="dx-bottom"><span>আজকের লাভ</span><strong style="color:'+pc+'">'+dxM(tP)+'</strong></div>';
+h+='<div class="dx-acts"><button type="button" class="dx-btn" onclick="openCS()"><i class="fas fa-money-bill-wave"></i> নগদ বিক্রি</button><button type="button" class="dx-btn" onclick="openSI()"><i class="fas fa-file-invoice"></i> নতুন চালান</button><button type="button" class="dx-btn" onclick="openTC()"><i class="fas fa-pen"></i> খরচ লিখুন</button><button type="button" class="dx-btn" onclick="openNC()"><i class="fas fa-user-plus"></i> নতুন গ্রাহক</button><button type="button" class="dx-btn" onclick="openNP()"><i class="fas fa-cube"></i> নতুন পণ্য</button></div>';
+h+='</div></section>';
+h+='<div class="dx-tags">'+dxTag('red','গ্রাহকের বাকি',dxM(tdue),toBn(DB.customers.length)+' জন গ্রাহক','customers','fa-wallet')+dxTag('amb','ডিলার বাকি',dxM(tdd),toBn(DB.dealers.length)+' জন ডিলার','dealers','fa-building')+'</div>';
+h+='</div><figure class="dx-photo" role="img" aria-label="সূর্যাস্তের সময় নদীর ধারে তোলা ছবি"></figure></div></div>';
+document.getElementById('pgDashboard').innerHTML=h}
+function openTS(){setM('mainModal','<div class="m-head"><h3>আজকের বিক্রি</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div style="display:flex;gap:20px"><div class="dash-popup-opt card-green" onclick="closeM(\'mainModal\');openCS()"><i class="fas fa-money-bill-wave" style="color:var(--grn)"></i><span>নগদ</span><div style="font-size:12px;color:var(--tm)">৳ '+toBn(getCS(autoDate()).toFixed(2))+'</div></div><div class="dash-popup-opt card-orange" onclick="closeM(\'mainModal\');openCSV()"><i class="fas fa-file-invoice-dollar" style="color:var(--org)"></i><span>বাকি</span><div style="font-size:12px;color:var(--tm)">৳ '+toBn(getCRS(autoDate()).toFixed(2))+'</div></div></div></div>');openM('mainModal')}
+function openCSV(){var td=autoDate(),r='';DB.customers.forEach(function(c){c.transactions.forEach(function(t){if(t.type==='invoice'&&t.date===td)r+='<tr><td>'+esc(c.name)+'</td><td>'+esc(t.invoiceNo)+'</td><td class="t-num">৳ '+toBn(t.totalBill)+'</td></tr>'})});setM('mainModal','<div class="m-head"><h3>বাকি বিক্রি</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body">'+(r?'<table><thead><tr><th>গ্রাহক</th><th>চালান</th><th>বিক্রি</th></tr></thead><tbody>'+r+'</tbody></table>':'<p class="empty-msg">আজ কোনো বাকি বিক্রি হয়নি</p>')+'</div>');openM('mainModal')}
+
+/* ═══════════════ নগদ বিক্রি ═══════════════ */
+var cSI=[];
+function openCS(){cSI=[];setM('mainModal','<div class="m-head"><h3>নগদ বিক্রি</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="stock-warn" id="csW"></div><div class="fg" style="position:relative"><label>পণ্য খুঁজুন</label><input id="csS" placeholder="নাম লিখুন..." oninput="sCSP(this.value)" onfocus="sCSP(this.value)" autocomplete="off"><div id="csD" class="prod-dropdown" style="display:none"></div></div><button class="more-prod-btn" onclick="oMPC()"><i class="fas fa-plus"></i> আরও পণ্য</button><div id="csP"></div><div style="margin-top:14px"><div class="calc-row"><span>সর্বমোট</span><input type="number" id="csT" class="ed-inp num" style="width:120px;text-align:right" placeholder="0" min="0"></div></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sCS()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal');sCL('csS','csD')}
+function sCSP(q){var dd=document.getElementById('csD');if(!dd)return;var f=q.toLowerCase(),l=DB.products.filter(function(p){return p.name.toLowerCase().includes(f)});if(!l.length){dd.style.display='none';return}dd.style.display='block';dd.innerHTML=l.map(function(p){return'<div onclick="aCSP('+p.id+')">'+esc(p.name)+' — ৳'+toBn(p.sellPrice)+' ('+toBn(p.stock)+')</div>'}).join('')}
+function aCSP(pid){var p=DB.products.find(function(x){return x.id===pid});if(!p)return;if(cSI.some(function(x){return x.pid===pid})){toast('warn','ইতিমধ্যে যোগ হয়েছে');return}cSI.push({pid:p.id,name:p.name,buyPrice:p.buyPrice,qty:1,price:p.sellPrice});rCS();var s=document.getElementById('csS');if(s)s.value='';var d=document.getElementById('csD');if(d)d.style.display='none'}
+function oMPC(){var h='<div class="m-head"><h3>পণ্য নির্বাচন</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body">';DB.products.forEach(function(p){h+='<div class="prod-list-item"><span>'+esc(p.name)+' — ৳'+toBn(p.sellPrice)+' ('+toBn(p.stock)+')</span>'+(cSI.some(function(x){return x.pid===p.id})?'<span class="pl-added">যোগ হয়েছে</span>':'<button class="pl-add" onclick="aCSP('+p.id+');closeM(\'sub2Modal\');oMPC();rCS()">যোগ</button>')+'</div>'});h+='</div>';setM('sub2Modal',h);openM('sub2Modal')}
+function rCS(){var el=document.getElementById('csP');if(!el)return;el.innerHTML='<table><thead><tr><th>পণ্য</th><th>পরিমাণ</th><th>দাম</th><th>মোট</th><th></th></tr></thead><tbody>'+cSI.map(function(p,i){return'<tr><td>'+esc(p.name)+'</td><td><input class="ed-inp num" type="number" value="'+p.qty+'" min="1" onchange="cSI['+i+'].qty=Math.max(1,+this.value||1);rCS()" style="width:60px"></td><td class="t-num">'+toBn(p.price)+'</td><td class="t-num">'+toBn(p.qty*p.price)+'</td><td><button class="ib del" onclick="cSI.splice('+i+',1);rCS()"><i class="fas fa-times"></i></button></td></tr>'}).join('')+'</tbody></table>';var tt=document.getElementById('csT');if(tt)tt.value=cSI.reduce(function(a,p){return a+p.qty*p.price},0)}
+
+function sCS(){if(!cSI.length){toast('warn','কমপক্ষে একটি পণ্য যোগ করুন');return}var lo=[];cSI.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr&&x.qty>pr.stock)lo.push(pr.name+' (চাহিদা: '+x.qty+', স্টক: '+pr.stock+')')});if(lo.length&&!confirm('স্টক পর্যাপ্ত নেই:\n'+lo.join('\n')+'\nতারপরও সংরক্ষণ করবেন?'))return;cSI.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr)pr.stock=Math.max(0,(pr.stock||0)-x.qty)});var tot=Math.max(0,+(document.getElementById('csT').value||0));var act=cSI.reduce(function(s,p){return s+p.qty*p.price},0);DB.cashSales.push({date:autoDate(),total:tot,discount:act-tot,products:cSI.map(function(p){return{pid:p.pid,name:p.name,buyPrice:p.buyPrice,qty:p.qty,price:p.price}})});saveDB();closeM('mainModal');renderDash();toast('ok','নগদ বিক্রি সংরক্ষিত হয়েছে')}
+
+/* ═══════════════ খরচ ═══════════════ */
+function openTC(){var e=getTE();setM('mainModal','<div class="m-head"><h3>আজকের খরচ</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>পণ্য ক্রয়</label><input type="number" id="eP" value="'+e.purchase+'" min="0" oninput="cET()"></div><div class="fg"><label>বাড়ি খরচ</label><input type="number" id="eH" value="'+e.home+'" min="0" oninput="cET()"></div><div class="fg"><label>দোকান খরচ</label><input type="number" id="eS" value="'+e.shop+'" min="0" oninput="cET()"></div><div style="padding:12px 0;font-size:15px;font-weight:700;border-top:1px solid var(--bd)">মোট: <span id="eT" style="color:var(--red)">৳ '+toBn(getTTC().toFixed(2))+'</span></div><div style="margin-top:6px;padding-top:12px;border-top:1px dashed var(--bd)"><button type="button" class="mbtn mbtn-g" style="color:var(--red);border-color:#f3c0c0" onclick="resetExp()">সব দিনের খরচ মুছে ০ করুন</button></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sE()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal')}
+function cET(){var p=+(document.getElementById('eP')?.value||0),h=+(document.getElementById('eH')?.value||0),s=+(document.getElementById('eS')?.value||0);document.getElementById('eT').textContent='৳ '+toBn((p+h+s).toFixed(2))}
+function resetExp(){
+if(!confirm('সব দিনের খরচের হিসাব (পণ্য ক্রয়, বাড়ি ও দোকান খরচ) মুছে ০ হয়ে যাবে।\n\nডিলারের পেমেন্ট ও বিক্রির হিসাব থাকবে।\nআগে একটা ব্যাকআপ ফাইল নামানো হবে।\n\nএগিয়ে যাবেন?'))return;
+dlBackup();
+DB.expenses=[];saveDB();closeM('mainModal');renderDash();
+if(document.getElementById('pgSummary').classList.contains('act'))renderSUM();
+toast('ok','সব খরচ ০ করা হয়েছে। এখন নতুন করে লিখুন')}
+function sE(){var p=Math.max(0,+(document.getElementById('eP')?.value||0)),h=Math.max(0,+(document.getElementById('eH')?.value||0)),s=Math.max(0,+(document.getElementById('eS')?.value||0));var e=getTE();e.purchase=p;e.home=h;e.shop=s;saveDB();closeM('mainModal');renderDash();toast('ok','খরচ সংরক্ষিত হয়েছে')}
+
+/* ═══════════════ পণ্য ═══════════════ */
+var ePid=null;
+function initPP(){document.getElementById('pgProducts').innerHTML='<div class="srch-wrap"><i class="fas fa-search"></i><input class="srch" id="pS" placeholder="পণ্য খুঁজুন..." oninput="fP()"></div><div class="panel"><div class="p-body" style="overflow-x:auto"><table><thead><tr><th>ক্রমিক</th><th>নাম</th><th>ক্রয়</th><th>বিক্রয়</th><th>লাভ</th><th>অ্যাকশন</th></tr></thead><tbody id="pTb"></tbody></table></div></div>';fP()}
+function fP(){var f=(document.getElementById('pS')?.value||'').toLowerCase(),l=DB.products.filter(function(p){return p.name.toLowerCase().includes(f)}),tb=document.getElementById('pTb');if(!tb)return;if(!l.length){tb.innerHTML='<tr><td colspan="6" class="empty-msg">কোনো পণ্য নেই</td></tr>';return}tb.innerHTML=l.map(function(p,i){var pr=p.sellPrice-p.buyPrice;if(ePid===p.id)return'<tr><td>'+toBn(i+1)+'</td><td><input class="ed-inp" id="en_'+p.id+'" value="'+esc(p.name)+'"></td><td><input class="ed-inp num" type="number" id="eb_'+p.id+'" value="'+p.buyPrice+'" min="0" oninput="cEP('+p.id+')"></td><td><input class="ed-inp num" type="number" id="es_'+p.id+'" value="'+p.sellPrice+'" min="0" oninput="cEP('+p.id+')"></td><td class="t-num" id="ep_'+p.id+'">'+toBn(pr)+'</td><td><button class="ib save" onclick="sEP('+p.id+')"><i class="fas fa-save"></i></button><button class="ib cancel" onclick="ePid=null;fP()"><i class="fas fa-times"></i></button></td></tr>';return'<tr><td>'+toBn(i+1)+'</td><td>'+esc(p.name)+'</td><td class="t-num">'+toBn(p.buyPrice)+'</td><td class="t-num">'+toBn(p.sellPrice)+'</td><td class="t-num">'+toBn(pr)+'</td><td><button class="ib edit" onclick="ePid='+p.id+';fP()"><i class="fas fa-pen"></i></button><button class="ib del" onclick="dP('+p.id+')"><i class="fas fa-trash"></i></button></td></tr>'}).join('')}
+function cEP(id){var b=+(document.getElementById('eb_'+id)?.value||0),s=+(document.getElementById('es_'+id)?.value||0);document.getElementById('ep_'+id).textContent=toBn(s-b)}
+function sEP(id){var n=document.getElementById('en_'+id).value.trim();if(!n){toast('warn','নাম দিন');return}var b=+(document.getElementById('eb_'+id).value||0),s=+(document.getElementById('es_'+id).value||0);if(b<=0||s<=0){toast('warn','সঠিক মূল্য দিন');return}if(DB.products.some(function(p){return p.id!==id&&p.name===n})){toast('err','এই নামে আছে');return}var p=DB.products.find(function(x){return x.id===id});if(p){p.name=n;p.buyPrice=b;p.sellPrice=s}ePid=null;saveDB();fP();toast('ok','আপডেট হয়েছে')}
+function dP(id){setM('mainModal','<div class="m-head"><h3>মুছে ফেলতে চান?</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><p>পণ্যটি মুছে ফেলতে চান?</p></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-r" onclick="DB.products=DB.products.filter(function(p){return p.id!=='+id+'});saveDB();closeM(\'mainModal\');fP();toast(\'ok\',\'মুছে ফেলা হয়েছে\')">মুছুন</button></div>');openM('mainModal')}
+function openNP(){setM('mainModal','<div class="m-head"><h3>নতুন পণ্য</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>নাম</label><input id="npN" placeholder="নাম লিখুন"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="fg"><label>ক্রয় মূল্য</label><input type="number" id="npB" placeholder="0" min="0" oninput="cNP()"></div><div class="fg"><label>বিক্রয় মূল্য</label><input type="number" id="npS" placeholder="0" min="0" oninput="cNP()"></div></div><div class="fg"><label>স্টক</label><input type="number" id="npSt" placeholder="0" min="0"></div><div style="padding:10px 0;font-size:14px;font-weight:600">লাভ: <span id="npP" style="color:var(--grn);font-family:Space Grotesk,sans-serif">'+toBn(0)+'</span></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sNP()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal')}
+function cNP(){document.getElementById('npP').textContent=toBn((+(document.getElementById('npS')?.value||0))-(+(document.getElementById('npB')?.value||0)))}
+function sNP(){var n=document.getElementById('npN').value.trim(),b=+(document.getElementById('npB').value||0),s=+(document.getElementById('npS').value||0),st=+(document.getElementById('npSt').value||0);if(!n){toast('warn','নাম দিন');return}if(b<=0||s<=0){toast('warn','সঠিক মূল্য দিন');return}if(DB.products.some(function(p){return p.name===n})){toast('err','এই নামে আছে');return}DB.products.push({id:DB.nxtPid++,name:n,buyPrice:b,sellPrice:s,stock:st});saveDB();closeM('mainModal');if(document.getElementById('pgProducts').classList.contains('act'))fP();renderDash();toast('ok','পণ্য যোগ হয়েছে')}
+
+/* ═══════════════ স্টক ═══════════════ */
+function initSP(){document.getElementById('pgStocks').innerHTML='<div class="panel"><div class="p-head"><h3><i class="fas fa-warehouse"></i> বর্তমান স্টক</h3></div><div class="p-body" style="overflow-x:auto"><table><thead><tr><th>পণ্যের নাম</th><th>পরিমাণ</th><th>অবস্থা</th></tr></thead><tbody>'+DB.products.map(function(p){var st=p.stock||0;var ss=st===0?'<span style="color:var(--red);font-weight:600">শেষ</span>':st<=2?'<span style="color:var(--org);font-weight:600">কম</span>':'<span style="color:var(--grn);font-weight:600">স্বাভাবিক</span>';return'<tr><td>'+esc(p.name)+'</td><td class="t-num" style="color:'+(st<=2?'var(--red)':'var(--tp)')+'">'+toBn(st)+'</td><td>'+ss+'</td></tr>'}).join('')+'</tbody></table></div></div>'}
+
+/* ═══════════════ গ্রাহক ═══════════════ */
+var eCid=null;
+function initCP(){document.getElementById('pgCustomers').innerHTML='<div class="srch-wrap"><i class="fas fa-search"></i><input class="srch" id="cS" placeholder="গ্রাহক খুঁজুন..." oninput="fC()"></div><div class="panel"><div class="p-body" style="overflow-x:auto"><table><thead><tr><th>ক্রমিক</th><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th>বাকি</th><th>অ্যাকশন</th></tr></thead><tbody id="cTb"></tbody></table></div></div>';fC()}
+function fC(){var f=(document.getElementById('cS')?.value||'').toLowerCase(),l=DB.customers.filter(function(c){return c.name.toLowerCase().includes(f)||c.phone.includes(f)}),tb=document.getElementById('cTb');if(!tb)return;if(!l.length){tb.innerHTML='<tr><td colspan="6" class="empty-msg">কোনো গ্রাহক নেই</td></tr>';return}tb.innerHTML=l.map(function(c,i){var d=calcDue(c);if(eCid===c.id)return'<tr><td>'+toBn(i+1)+'</td><td><input class="ed-inp" id="cn_'+c.id+'" value="'+esc(c.name)+'"></td><td><input class="ed-inp" id="cp_'+c.id+'" value="'+esc(c.phone)+'"></td><td><input class="ed-inp" id="ca_'+c.id+'" value="'+esc(c.address)+'"></td><td class="t-num" style="color:var(--red)">'+toBn(d.toFixed(2))+'</td><td><button class="ib save" onclick="sEC('+c.id+')"><i class="fas fa-save"></i></button><button class="ib cancel" onclick="eCid=null;fC()"><i class="fas fa-times"></i></button></td></tr>';return'<tr><td>'+toBn(i+1)+'</td><td><span class="t-name" onclick="oCD('+c.id+')">'+esc(c.name)+'</span></td><td>'+esc(c.phone)+'</td><td>'+esc(c.address)+'</td><td class="t-num" style="color:'+(d>0?'var(--red)':'var(--grn)')+'">৳ '+toBn(d.toFixed(2))+'</td><td><button class="ib edit" onclick="eCid='+c.id+';fC()"><i class="fas fa-pen"></i></button><button class="ib del" onclick="dC('+c.id+')"><i class="fas fa-trash"></i></button></td></tr>'}).join('')}
+function sEC(id){var n=document.getElementById('cn_'+id).value.trim();if(!n){toast('warn','নাম দিন');return}if(DB.customers.some(function(c){return c.id!==id&&c.name===n&&c.phone===document.getElementById('cp_'+id).value.trim()})){toast('err','এই নামে আছে');return}var c=DB.customers.find(function(x){return x.id===id});if(c){c.name=n;c.phone=document.getElementById('cp_'+id).value.trim();c.address=document.getElementById('ca_'+id).value.trim()}eCid=null;saveDB();fC();toast('ok','আপডেট হয়েছে')}
+function dC(id){setM('mainModal','<div class="m-head"><h3>মুছে ফেলতে চান?</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><p>গ্রাহককে মুছে ফেলতে চান?</p></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-r" onclick="DB.customers=DB.customers.filter(function(c){return c.id!=='+id+'});saveDB();closeM(\'mainModal\');fC();toast(\'ok\',\'মুছে ফেলা হয়েছে\')">মুছুন</button></div>');openM('mainModal')}
+function openNC(){setM('mainModal','<div class="m-head"><h3>নতুন গ্রাহক</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>নাম</label><input id="ncN" placeholder="নাম লিখুন"></div><div class="fg"><label>মোবাইল</label><input id="ncP" placeholder="01XXXXXXXXX"></div><div class="fg"><label>ঠিকানা</label><input id="ncA" placeholder="ঠিকানা লিখুন"></div><div class="fg"><label>পূর্বের বাকি</label><input type="number" id="ncPD" placeholder="0" min="0"></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sNC()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal')}
+function sNC(){var n=document.getElementById('ncN').value.trim(),p=document.getElementById('ncP').value.trim(),a=document.getElementById('ncA').value.trim(),pd=Math.max(0,+(document.getElementById('ncPD')?.value||0));if(!n){toast('warn','নাম দিন');return}if(DB.customers.some(function(c){return c.name===n&&c.phone===p})){toast('err','এই নাম ও মোবাইলে গ্রাহক আছে');return}var tx=[];if(pd>0){tx.push({date:autoDate(),invoiceNo:'পূর্বের বাকি',totalBill:0,paid:0,due:pd,type:'previous_due',products:[]})}DB.customers.push({id:DB.nxtCid++,name:n,phone:p,address:a,transactions:tx});saveDB();closeM('mainModal');if(document.getElementById('pgCustomers').classList.contains('act'))fC();renderDash();toast('ok','গ্রাহক যোগ হয়েছে')}
+/* ═══════════════ গ্রাহক বিস্তারিত ═══════════════ */
+function oCD(id){var c=DB.customers.find(function(x){return x.id===id});if(!c)return;var due=calcDue(c);var h='<div class="m-head"><h3>'+esc(c.name)+'</h3><button class="m-x" onclick="closeM(\'subModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="cust-info-bar"><span>মোবাইল: <strong>'+esc(c.phone)+'</strong></span><span>ঠিকানা: <strong>'+esc(c.address)+'</strong></span><span>বাকি: <strong class="cust-due-big">৳ '+toBn(due.toFixed(2))+'</strong></span></div><div class="action-btns"><button style="background:var(--blu)" onclick="addInvF('+c.id+')"><i class="fas fa-file-invoice"></i> নতুন চালান</button><button style="background:var(--grn)" onclick="addDepF('+c.id+')"><i class="fas fa-hand-holding-dollar"></i> জমা</button></div>';if(!c.transactions.length){h+='<p class="empty-msg">কোনো লেনদেন নেই</p>'}else{h+='<table><thead><tr><th>তারিখ</th><th>চালান</th><th>বিল</th><th>জমা</th><th>বাকি</th><th></th></tr></thead><tbody>';c.transactions.forEach(function(t,i){if(t.type==='invoice'){h+='<tr><td>'+esc(t.date)+'</td><td class="t-click" onclick="vInv('+c.id+','+i+')">'+esc(t.invoiceNo)+'</td><td class="t-num">৳ '+toBn(t.totalBill)+'</td><td class="t-num" style="color:var(--grn)">৳ '+toBn(t.paid)+'</td><td class="t-num" style="color:var(--red)">৳ '+toBn(t.due)+'</td><td><button class="ib del" onclick="delCT('+c.id+','+i+')"><i class="fas fa-trash"></i></button></td></tr>'}else if(t.type==='previous_due'){h+='<tr><td>'+esc(t.date)+'</td><td><span class="s-pill" style="background:var(--pur-l);color:var(--pur)">পূর্বের বাকি</span></td><td>—</td><td>—</td><td class="t-num" style="color:var(--red)">৳ '+toBn(t.due)+'</td><td><button class="ib del" onclick="delCT('+c.id+','+i+')"><i class="fas fa-trash"></i></button></td></tr>'}else{h+='<tr><td>'+esc(t.date)+'</td><td><span class="s-pill s-dep">জমা</span></td><td>—</td><td class="t-num" style="color:var(--grn)">৳ '+toBn(t.paid)+'</td><td>—</td><td><button class="ib del" onclick="delCT('+c.id+','+i+')"><i class="fas fa-trash"></i></button></td></tr>'}});h+='</tbody></table>'}h+='</div>';setM('subModal',h);openM('subModal')}
+function vInv(cid,idx){var c=DB.customers.find(function(x){return x.id===cid});if(!c||!c.transactions[idx])return;var t=c.transactions[idx];var h='<div class="m-head"><h3>'+esc(t.invoiceNo)+'</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><p style="margin-bottom:10px;color:var(--ts)">গ্রাহক: <strong>'+esc(c.name)+'</strong> | তারিখ: <strong>'+esc(t.date)+'</strong></p>';if(t.products&&t.products.length){h+='<table><thead><tr><th>পণ্য</th><th>পরিমাণ</th><th>দাম</th><th>মোট</th></tr></thead><tbody>';t.products.forEach(function(p){h+='<tr><td>'+esc(p.name)+'</td><td class="t-num">'+toBn(p.qty)+'</td><td class="t-num">'+toBn(p.price)+'</td><td class="t-num">'+toBn(p.qty*p.price)+'</td></tr>'});h+='</tbody></table>'}h+='<div style="margin-top:12px"><div class="calc-row"><span>মোট বিল</span><span class="t-num">৳ '+toBn(t.totalBill)+'</span></div><div class="calc-row"><span>জমা</span><span class="t-num" style="color:var(--grn)">৳ '+toBn(t.paid)+'</span></div><div class="calc-row due"><span>বাকি</span><span>৳ '+toBn(t.due)+'</span></div></div></div>';setM('sub2Modal',h);openM('sub2Modal')}
+function delCT(cid,idx){var c=DB.customers.find(function(x){return x.id===cid});if(!c)return;var t=c.transactions[idx];if(t.type==='invoice'&&t.products){t.products.forEach(function(p){var pr=DB.products.find(function(x){return x.name===p.name});if(pr)pr.stock=(pr.stock||0)+p.qty})}c.transactions.splice(idx,1);saveDB();oCD(cid);renderDash();toast('ok','লেনদেন মুছে ফেলা হয়েছে')}
+
+/* ═══════════════ চালান তৈরি ═══════════════ */
+var sII=[],sICid=0;
+function openSI(){sII=[];sICid=0;setM('mainModal','<div class="m-head"><h3>নতুন চালান</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg" style="position:relative"><label>গ্রাহক খুঁজুন</label><input id="siC" placeholder="নাম লিখুন..." oninput="sCDD(this.value)" onfocus="sCDD(this.value)" autocomplete="off"><div id="siCD" class="cust-dd" style="display:none"></div></div><div id="siCS"></div><div class="fg" style="position:relative"><label>পণ্য খুঁজুন</label><input id="siS" placeholder="নাম লিখুন..." oninput="sSIP(this.value)" onfocus="sSIP(this.value)" autocomplete="off"><div id="siD" class="prod-dropdown" style="display:none"></div></div><button class="more-prod-btn" onclick="oMPI()"><i class="fas fa-plus"></i> আরও পণ্য</button><div id="siP"></div><div style="margin-top:14px"><div class="calc-row"><span>মোট বিল</span><span class="t-num" id="siT">৳ '+toBn(0)+'</span></div><div class="fg" style="margin-top:10px;margin-bottom:0"><label>জমা</label><input type="number" id="siPaid" value="0" min="0" oninput="cSIDue()"></div><div class="calc-row due"><span>বাকি</span><span id="siDue">৳ '+toBn(0)+'</span></div></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sSI()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal');sCL('siC','siCD');sCL('siS','siD')}
+function sCDD(q){var dd=document.getElementById('siCD');if(!dd)return;var f=q.toLowerCase(),l=DB.customers.filter(function(c){return c.name.toLowerCase().includes(f)});if(!l.length){dd.style.display='none';return}dd.style.display='block';dd.innerHTML=l.map(function(c){return'<div onclick="selSIC('+c.id+')"><span>'+esc(c.name)+'</span><span class="cust-due">বাকি: ৳'+toBn(calcDue(c).toFixed(2))+'</span></div>'}).join('')}
+function selSIC(id){sICid=id;var c=DB.customers.find(function(x){return x.id===id});var el=document.getElementById('siCS');if(el)el.innerHTML='<div style="padding:8px 12px;background:var(--blu-l);border-radius:6px;margin-bottom:10px;font-size:13px"><strong>'+esc(c.name)+'</strong> — '+esc(c.phone)+'</div>';var s=document.getElementById('siC');if(s)s.value='';var d=document.getElementById('siCD');if(d)d.style.display='none'}
+function sSIP(q){var dd=document.getElementById('siD');if(!dd)return;if(!sICid){toast('warn','আগে গ্রাহক নির্বাচন করুন');dd.style.display='none';return}var f=q.toLowerCase(),l=DB.products.filter(function(p){return p.name.toLowerCase().includes(f)});if(!l.length){dd.style.display='none';return}dd.style.display='block';dd.innerHTML=l.map(function(p){return'<div onclick="aSIP('+p.id+')">'+esc(p.name)+' — ৳'+toBn(p.sellPrice)+' ('+toBn(p.stock)+')</div>'}).join('')}
+function aSIP(pid){var p=DB.products.find(function(x){return x.id===pid});if(!p)return;if(sII.some(function(x){return x.pid===pid})){toast('warn','ইতিমধ্যে যোগ হয়েছে');return}sII.push({pid:p.id,name:p.name,buyPrice:p.buyPrice,qty:1,price:p.sellPrice});rSIP();var s=document.getElementById('siS');if(s)s.value='';var d=document.getElementById('siD');if(d)d.style.display='none'}
+function oMPI(){var h='<div class="m-head"><h3>পণ্য নির্বাচন</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body">';DB.products.forEach(function(p){h+='<div class="prod-list-item"><span>'+esc(p.name)+' — ৳'+toBn(p.sellPrice)+' ('+toBn(p.stock)+')</span>'+(sII.some(function(x){return x.pid===p.id})?'<span class="pl-added">যোগ হয়েছে</span>':'<button class="pl-add" onclick="aSIP('+p.id+');closeM(\'sub2Modal\');oMPI();rSIP()">যোগ</button>')+'</div>'});h+='</div>';setM('sub2Modal',h);openM('sub2Modal')}
+function rSIP(){var el=document.getElementById('siP');if(!el)return;el.innerHTML='<table><thead><tr><th>পণ্য</th><th>পরিমাণ</th><th>দাম</th><th>মোট</th><th></th></tr></thead><tbody>'+sII.map(function(p,i){return'<tr><td>'+esc(p.name)+'</td><td><input class="ed-inp num" type="number" value="'+p.qty+'" min="1" onchange="sII['+i+'].qty=Math.max(1,+this.value||1);rSIP()" style="width:60px"></td><td class="t-num">'+toBn(p.price)+'</td><td class="t-num">'+toBn(p.qty*p.price)+'</td><td><button class="ib del" onclick="sII.splice('+i+',1);rSIP()"><i class="fas fa-times"></i></button></td></tr>'}).join('')+'</tbody></table>';cSIDue()}
+function cSIDue(){var t=sII.reduce(function(s,p){return s+p.qty*p.price},0);var paid=Math.max(0,+(document.getElementById('siPaid')?.value||0));document.getElementById('siT').textContent='৳ '+toBn(t);document.getElementById('siDue').textContent='৳ '+toBn(Math.max(0,t-paid))}
+function sSI(){if(!sICid){toast('warn','গ্রাহক নির্বাচন করুন');return}if(!sII.length){toast('warn','কমপক্ষে একটি পণ্য যোগ করুন');return}var lo=[];sII.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr&&x.qty>pr.stock)lo.push(pr.name+' (চাহিদা: '+x.qty+', স্টক: '+pr.stock+')')});if(lo.length&&!confirm('স্টক পর্যাপ্ত নেই:\n'+lo.join('\n')+'\nতারপরও সংরক্ষণ করবেন?'))return;var total=sII.reduce(function(s,p){return s+p.qty*p.price},0);var paid=Math.max(0,+(document.getElementById('siPaid')?.value||0));var extra=Math.max(0,paid-total);paid=Math.min(paid,total);var due=total-paid;sII.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr)pr.stock=Math.max(0,(pr.stock||0)-x.qty)});var c=DB.customers.find(function(x){return x.id===sICid});if(c){c.transactions.push({date:autoDate(),invoiceNo:nextInv(DB.nxtInv),totalBill:total,paid:paid,due:due,type:'invoice',products:sII.map(function(p){return{pid:p.pid,name:p.name,buyPrice:p.buyPrice,qty:p.qty,price:p.price}})});if(extra>0)c.transactions.push({date:autoDate(),invoiceNo:'জমা',totalBill:0,paid:extra,due:0,type:'deposit',products:[]});DB.nxtInv++}saveDB();closeM('mainModal');renderDash();toast('ok','চালান সংরক্ষিত হয়েছে')}
+
+/* ═══════════════ গ্রাহকের থেকে চালান/জমা ═══════════════ */
+var aII=[],aICid=0;
+function addInvF(cid){aII=[];aICid=cid;setM('sub2Modal','<div class="m-head"><h3>নতুন চালান</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg" style="position:relative"><label>পণ্য খুঁজুন</label><input id="aIS" placeholder="নাম লিখুন..." oninput="sAIP(this.value)" onfocus="sAIP(this.value)" autocomplete="off"><div id="aID" class="prod-dropdown" style="display:none"></div></div><div id="aIP"></div><div style="margin-top:14px"><div class="calc-row"><span>মোট বিল</span><span class="t-num" id="aIT">৳ '+toBn(0)+'</span></div><div class="fg" style="margin-top:10px;margin-bottom:0"><label>জমা</label><input type="number" id="aIPaid" value="0" min="0" oninput="cAIDue()"></div><div class="calc-row due"><span>বাকি</span><span id="aIDue">৳ '+toBn(0)+'</span></div></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'sub2Modal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sAInv()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('sub2Modal');sCL('aIS','aID')}
+function sAIP(q){var dd=document.getElementById('aID');if(!dd)return;var f=q.toLowerCase(),l=DB.products.filter(function(p){return p.name.toLowerCase().includes(f)});if(!l.length){dd.style.display='none';return}dd.style.display='block';dd.innerHTML=l.map(function(p){return'<div onclick="aAIP('+p.id+')">'+esc(p.name)+' — ৳'+toBn(p.sellPrice)+' ('+toBn(p.stock)+')</div>'}).join('')}
+function aAIP(pid){var p=DB.products.find(function(x){return x.id===pid});if(!p)return;if(aII.some(function(x){return x.pid===pid})){toast('warn','ইতিমধ্যে যোগ হয়েছে');return}aII.push({pid:p.id,name:p.name,buyPrice:p.buyPrice,qty:1,price:p.sellPrice});rAIP();var s=document.getElementById('aIS');if(s)s.value='';var d=document.getElementById('aID');if(d)d.style.display='none'}
+function rAIP(){var el=document.getElementById('aIP');if(!el)return;el.innerHTML='<table><thead><tr><th>পণ্য</th><th>পরিমাণ</th><th>দাম</th><th>মোট</th><th></th></tr></thead><tbody>'+aII.map(function(p,i){return'<tr><td>'+esc(p.name)+'</td><td><input class="ed-inp num" type="number" value="'+p.qty+'" min="1" onchange="aII['+i+'].qty=Math.max(1,+this.value||1);rAIP()" style="width:60px"></td><td class="t-num">'+toBn(p.price)+'</td><td class="t-num">'+toBn(p.qty*p.price)+'</td><td><button class="ib del" onclick="aII.splice('+i+',1);rAIP()"><i class="fas fa-times"></i></button></td></tr>'}).join('')+'</tbody></table>';cAIDue()}
+function cAIDue(){var t=aII.reduce(function(s,p){return s+p.qty*p.price},0);var paid=Math.max(0,+(document.getElementById('aIPaid')?.value||0));document.getElementById('aIT').textContent='৳ '+toBn(t);document.getElementById('aIDue').textContent='৳ '+toBn(Math.max(0,t-paid))}
+function sAInv(){if(!aII.length){toast('warn','কমপক্ষে একটি পণ্য যোগ করুন');return}var lo=[];aII.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr&&x.qty>pr.stock)lo.push(pr.name+' (চাহিদা: '+x.qty+', স্টক: '+pr.stock+')')});if(lo.length&&!confirm('স্টক পর্যাপ্ত নেই:\n'+lo.join('\n')+'\nতারপরও সংরক্ষণ করবেন?'))return;var total=aII.reduce(function(s,p){return s+p.qty*p.price},0);var paid=Math.max(0,+(document.getElementById('aIPaid')?.value||0));var extra=Math.max(0,paid-total);paid=Math.min(paid,total);var due=total-paid;aII.forEach(function(x){var pr=DB.products.find(function(p){return p.id===x.pid});if(pr)pr.stock=Math.max(0,(pr.stock||0)-x.qty)});var c=DB.customers.find(function(x){return x.id===aICid});if(c){c.transactions.push({date:autoDate(),invoiceNo:nextInv(DB.nxtInv),totalBill:total,paid:paid,due:due,type:'invoice',products:aII.map(function(p){return{pid:p.pid,name:p.name,buyPrice:p.buyPrice,qty:p.qty,price:p.price}})});if(extra>0)c.transactions.push({date:autoDate(),invoiceNo:'জমা',totalBill:0,paid:extra,due:0,type:'deposit',products:[]});DB.nxtInv++}saveDB();closeM('sub2Modal');oCD(aICid);renderDash();toast('ok','চালান সংরক্ষিত হয়েছে')}
+function addDepF(cid){setM('sub2Modal','<div class="m-head"><h3>জমা</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>জমার পরিমাণ</label><input type="number" id="depA" placeholder="0" min="0"></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'sub2Modal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sDep('+cid+')"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('sub2Modal')}
+function sDep(cid){var paid=Math.max(0,+(document.getElementById('depA')?.value||0));if(paid<=0){toast('warn','পরিমাণ দিন');return}var c=DB.customers.find(function(x){return x.id===cid});if(c){c.transactions.push({date:autoDate(),invoiceNo:'জমা',totalBill:0,paid:paid,due:0,type:'deposit',products:[]})}saveDB();closeM('sub2Modal');oCD(cid);renderDash();toast('ok','জমা সংরক্ষিত হয়েছে')}
+
+/* ═══════════════ ডিলার ═══════════════ */
+var eDid=null;
+function initDP(){document.getElementById('pgDealers').innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div></div><button class="mbtn mbtn-b" onclick="openND()"><i class="fas fa-plus"></i> নতুন ডিলার</button></div><div class="panel"><div class="p-body" style="overflow-x:auto"><table><thead><tr><th>ক্রমিক</th><th>নাম</th><th>বাকি</th><th>অ্যাকশন</th></tr></thead><tbody id="dTb"></tbody></table></div></div>';fD()}
+function fD(){var l=DB.dealers;var tb=document.getElementById('dTb');if(!tb)return;if(!l.length){tb.innerHTML='<tr><td colspan="4" class="empty-msg">কোনো ডিলার নেই</td></tr>';return}tb.innerHTML=l.map(function(d,i){var due=calcDD(d);if(eDid===d.id)return'<tr><td>'+toBn(i+1)+'</td><td><input class="ed-inp" id="dn_'+d.id+'" value="'+esc(d.name)+'"></td><td class="t-num" style="color:var(--red)">'+toBn(due.toFixed(2))+'</td><td><button class="ib save" onclick="sED('+d.id+')"><i class="fas fa-save"></i></button><button class="ib cancel" onclick="eDid=null;fD()"><i class="fas fa-times"></i></button></td></tr>';return'<tr><td>'+toBn(i+1)+'</td><td><span class="t-name" onclick="oDD('+d.id+')">'+esc(d.name)+'</span></td><td class="t-num" style="color:'+(due>0?'var(--red)':'var(--grn)')+'">৳ '+toBn(due.toFixed(2))+'</td><td><button class="ib edit" onclick="eDid='+d.id+';fD()"><i class="fas fa-pen"></i></button><button class="ib del" onclick="dD('+d.id+')"><i class="fas fa-trash"></i></button></td></tr>'}).join('')}
+function sED(id){var n=document.getElementById('dn_'+id).value.trim();if(!n){toast('warn','নাম দিন');return}if(DB.dealers.some(function(d){return d.id!==id&&d.name===n})){toast('err','এই নামে আছে');return}var d=DB.dealers.find(function(x){return x.id===id});if(d)d.name=n;eDid=null;saveDB();fD();toast('ok','আপডেট হয়েছে')}
+function dD(id){setM('mainModal','<div class="m-head"><h3>মুছে ফেলতে চান?</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><p>ডিলারকে মুছে ফেলতে চান?</p></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-r" onclick="DB.dealers=DB.dealers.filter(function(d){return d.id!=='+id+'});saveDB();closeM(\'mainModal\');initDP();toast(\'ok\',\'মুছে ফেলা হয়েছে\')">মুছুন</button></div>');openM('mainModal')}
+function openND(){setM('mainModal','<div class="m-head"><h3>নতুন ডিলার</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>নাম</label><input id="ndN" placeholder="ডিলারের নাম"></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'mainModal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sND()"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('mainModal')}
+function sND(){var n=document.getElementById('ndN').value.trim();if(!n){toast('warn','নাম দিন');return}if(DB.dealers.some(function(d){return d.name===n})){toast('err','এই নামে আছে');return}DB.dealers.push({id:DB.nxtDid++,name:n,transactions:[]});saveDB();closeM('mainModal');initDP();renderDash();toast('ok','ডিলার যোগ হয়েছে')}
+
+/* ═══════════════ ডিলার বিস্তারিত ═══════════════ */
+function oDD(id){var d=DB.dealers.find(function(x){return x.id===id});if(!d)return;var due=calcDD(d);var h='<div class="m-head"><h3>'+esc(d.name)+'</h3><button class="m-x" onclick="closeM(\'subModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="dlr-head"><div class="dlr-name">'+esc(d.name)+'</div><div class="dlr-due">বাকি: ৳ '+toBn(due.toFixed(2))+'</div></div><div class="action-btns"><button style="background:var(--blu)" onclick="addChF('+d.id+')"><i class="fas fa-file-invoice"></i> নতুন চালান</button><button style="background:var(--org)" onclick="addDPF('+d.id+')"><i class="fas fa-hand-holding-dollar"></i> পেমেন্ট</button></div>';if(!d.transactions.length){h+='<p class="empty-msg">কোনো লেনদেন নেই</p>'}else{h+='<table><thead><tr><th>তারিখ</th><th>চালান</th><th>বিল</th><th>পেমেন্ট</th><th>বাকি</th><th></th></tr></thead><tbody>';d.transactions.forEach(function(t,i){var isPay=isDP(t);h+='<tr><td>'+esc(t.date)+'</td><td>'+(isPay?'<span class="s-pill s-pay">পেমেন্ট</span>':esc(t.challanNo))+'</td><td class="t-num">'+(isPay?'—':'৳ '+toBn(t.totalBill))+'</td><td class="t-num" style="color:var(--grn)">৳ '+toBn(t.paid)+'</td><td class="t-num" style="color:'+(isPay?'var(--tm)':t.due>0?'var(--red)':'var(--grn)')+'">'+(isPay?'—':'৳ '+toBn(t.due))+'</td><td><button class="ib del" onclick="delDT('+d.id+','+i+')"><i class="fas fa-trash"></i></button></td></tr>'});h+='</tbody></table>'}h+='</div>';setM('subModal',h);openM('subModal')}
+function addChF(did){setM('sub2Modal','<div class="m-head"><h3>নতুন চালান</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>চালান নম্বর</label><input id="chN" value="'+toBn(DB.nxtCh)+'"></div><div class="fg"><label>মোট বিল</label><input type="number" id="chB" placeholder="0" min="0"></div><div class="fg"><label>পেমেন্ট</label><input type="number" id="chP" value="0" min="0" oninput="cChDue()"></div><div class="calc-row due"><span>বাকি</span><span id="chDue">৳ '+toBn(0)+'</span></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'sub2Modal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sCh('+did+')"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('sub2Modal')}
+function cChDue(){var b=Math.max(0,+(document.getElementById('chB')?.value||0)),p=Math.max(0,+(document.getElementById('chP')?.value||0));document.getElementById('chDue').textContent='৳ '+toBn(Math.max(0,b-p))}
+function sCh(did){var chNo=toEn(document.getElementById('chN')?.value||'').trim();var bill=Math.max(0,+(document.getElementById('chB')?.value||0));var paid=Math.max(0,+(document.getElementById('chP')?.value||0));if(!chNo){toast('warn','চালান নম্বর দিন');return}if(bill<=0){toast('warn','বিলের পরিমাণ দিন');return}var due=Math.max(0,bill-paid);var d=DB.dealers.find(function(x){return x.id===did});if(d){d.transactions.push({date:autoDate(),challanNo:chNo,totalBill:bill,paid:paid,due:due,type:'challan'});DB.nxtCh++}saveDB();closeM('sub2Modal');oDD(did);renderDash();toast('ok','চালান সংরক্ষিত হয়েছে')}
+function addDPF(did){setM('sub2Modal','<div class="m-head"><h3>পেমেন্ট</h3><button class="m-x" onclick="closeM(\'sub2Modal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div class="fg"><label>পেমেন্টের পরিমাণ</label><input type="number" id="dpA" placeholder="0" min="0"></div></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'sub2Modal\')">বাতিল</button><button class="mbtn mbtn-gr" onclick="sDP('+did+')"><i class="fas fa-save"></i> সংরক্ষণ</button></div>');openM('sub2Modal')}
+function sDP(did){var paid=Math.max(0,+(document.getElementById('dpA')?.value||0));if(paid<=0){toast('warn','পরিমাণ দিন');return}var d=DB.dealers.find(function(x){return x.id===did});if(d){d.transactions.push({date:autoDate(),challanNo:'পেমেন্ট',totalBill:0,paid:paid,due:0,type:'payment'})}saveDB();closeM('sub2Modal');oDD(did);renderDash();toast('ok','পেমেন্ট সংরক্ষিত হয়েছে')}
+function delDT(did,idx){var d=DB.dealers.find(function(x){return x.id===did});if(!d)return;d.transactions.splice(idx,1);saveDB();oDD(did);renderDash();toast('ok','লেনদেন মুছে ফেলা হয়েছে')}
+
+/* ═══════════════ হিসাব সারাংশ ═══════════════ */
+function initSUM(){var now=new Date();var cm=now.getMonth(),cy=now.getFullYear();var mOpts='';for(var i=0;i<12;i++){mOpts+='<option value="'+i+'"'+(i===cm?' selected':'')+'>'+MONTHS[i]+'</option>'}var yOpts='';for(var y=cy-2;y<=cy+1;y++){yOpts+='<option value="'+y+'"'+(y===cy?' selected':'')+'>'+toBn(y)+'</option>'}document.getElementById('pgSummary').innerHTML='<div class="panel"><div class="p-head"><h3><i class="fas fa-calculator"></i> মাসিক হিসাব</h3><div style="display:flex;gap:8px;align-items:center"><select id="sumM" onchange="renderSUM()" style="background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:13px;font-family:\'Hind Siliguri\',sans-serif;color:var(--tp);outline:none">'+mOpts+'</select><select id="sumY" onchange="renderSUM()" style="background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:13px;font-family:\'Hind Siliguri\',sans-serif;color:var(--tp);outline:none">'+yOpts+'</select></div></div><div class="p-body" id="sumBody"></div></div>';renderSUM()}
+function renderSUM(){var m=+(document.getElementById('sumM').value),y=+(document.getElementById('sumY').value);var d=getMD(m,y);var net=d.ts-d.tc;var netClr=net>=0?'var(--grn)':'var(--red)';var h='<div class="sum-stat"><div class="sum-stat-item"><div class="ss-val" style="color:var(--grn)">৳ '+toBn(d.cs.toFixed(2))+'</div><div class="ss-lbl">নগদ বিক্রি</div></div><div class="sum-stat-item"><div class="ss-val" style="color:var(--org)">৳ '+toBn(d.cr.toFixed(2))+'</div><div class="ss-lbl">বাকি বিক্রি</div></div></div><div class="sum-stat"><div class="sum-stat-item"><div class="ss-val" style="color:var(--blu)">৳ '+toBn(d.ts.toFixed(2))+'</div><div class="ss-lbl">মোট বিক্রি</div></div><div class="sum-stat-item"><div class="ss-val" style="color:var(--grn)">৳ '+toBn(d.pf.toFixed(2))+'</div><div class="ss-lbl">মোট লাভ</div></div></div><div class="sum-stat"><div class="sum-stat-item"><div class="ss-val" style="color:var(--red)">৳ '+toBn(d.pc.toFixed(2))+'</div><div class="ss-lbl">মোট ক্রয়</div></div><div class="sum-stat-item"><div class="ss-val" style="color:var(--org)">৳ '+toBn(d.oe.toFixed(2))+'</div><div class="ss-lbl">অন্যান্য খরচ</div></div></div><div style="margin-top:16px;padding:16px;background:'+(net>=0?'var(--grn-l)':'var(--red-l)')+';border-radius:10px;text-align:center"><div style="font-size:12px;color:var(--tm);margin-bottom:4px">নিট আয়</div><div style="font-family:Space Grotesk,sans-serif;font-size:28px;font-weight:700;color:'+netClr+'">৳ '+toBn(net.toFixed(2))+'</div></div>';h+='<div style="margin-top:20px"><div class="p-head" style="padding:14px 18px;border-bottom:1px solid var(--bd)"><h3 style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:7px"><i class="fas fa-calendar-day" style="color:var(--blu);font-size:13px"></i> দৈনিক বিবরণ</h3></div><div style="overflow-x:auto"><table><thead><tr><th>তারিখ</th><th>নগদ বিক্রি</th><th>বাকি বিক্রি</th><th>মোট বিক্রি</th><th>খরচ</th><th>লাভ</th></tr></thead><tbody>';var dim=new Date(y,m+1,0).getDate();var tcs=0,tcr=0,tts=0,ttc=0,tpf=0;for(var day=1;day<=dim;day++){var ds=toBn(String(day).padStart(2,'0'))+'/'+toBn(String(m+1).padStart(2,'0'))+'/'+toBn(y);var dd=getDD(ds);if(dd.cs===0&&dd.cr===0&&dd.tc===0)continue;tcs+=dd.cs;tcr+=dd.cr;tts+=dd.cs+dd.cr;ttc+=dd.tc;tpf+=dd.pf;h+='<tr><td>'+esc(ds)+'</td><td class="t-num" style="color:var(--grn)">৳ '+toBn(dd.cs.toFixed(2))+'</td><td class="t-num" style="color:var(--org)">৳ '+toBn(dd.cr.toFixed(2))+'</td><td class="t-num">৳ '+toBn((dd.cs+dd.cr).toFixed(2))+'</td><td class="t-num" style="color:var(--red)">৳ '+toBn(dd.tc.toFixed(2))+'</td><td class="t-num" style="color:'+(dd.pf>=0?'var(--grn)':'var(--red)')+'">৳ '+toBn(dd.pf.toFixed(2))+'</td></tr>'}if(tcs===0&&tcr===0&&ttc===0){h+='<tr><td colspan="6" class="empty-msg">এই মাসে কোনো লেনদেন নেই</td></tr>'}else{h+='<tr style="font-weight:700;border-top:2px solid var(--bd)"><td>মোট</td><td class="t-num" style="color:var(--grn)">৳ '+toBn(tcs.toFixed(2))+'</td><td class="t-num" style="color:var(--org)">৳ '+toBn(tcr.toFixed(2))+'</td><td class="t-num">৳ '+toBn(tts.toFixed(2))+'</td><td class="t-num" style="color:var(--red)">৳ '+toBn(ttc.toFixed(2))+'</td><td class="t-num" style="color:'+(tpf>=0?'var(--grn)':'var(--red)')+'">৳ '+toBn(tpf.toFixed(2))+'</td></tr>'}h+='</tbody></table></div></div>';document.getElementById('sumBody').innerHTML=h}
+/* ═══════════════ প্রাথমিক রেন্ডার ═══════════════ */
+applySettings();bootApp();
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
