@@ -119,7 +119,53 @@ button.dx-line:hover .dx-l{text-decoration:underline;text-decoration-color:var(-
 .st-prev{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#E8ECE3;border-radius:4px;margin-bottom:4px}
 @media(max-width:860px){.st-grid{grid-template-columns:1fr}}
 </style>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#14301F"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DokanPro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#22A83A"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DokanPro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style id="dx3d">
+html{background:#579E62}
+body{background:linear-gradient(180deg,#22A83A 0%,#3FA553 50%,#579E62 100%) fixed}
+.topbar{background:transparent;border-bottom:0;color:#fff}.topbar .tb-title,.topbar h1,.topbar #pageTitle{color:#fff}
+.dx-acts{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px;margin:0 0 20px;padding:0;border:0}
+.dx-acts .dx-btn:last-child{grid-column:1/-1}
+.dx-btn{--c:var(--btn,#4A2410);position:relative;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:14px;padding:14px 12px;color:var(--btn-t,#fff);font-family:'Hind Siliguri',sans-serif;font-size:15px;font-weight:600;cursor:pointer;
+ background:var(--c);background:linear-gradient(180deg,color-mix(in srgb,var(--c) 76%,#fff),var(--c));
+ box-shadow:0 6px 0 color-mix(in srgb,var(--c) 45%,#000),0 10px 14px rgba(0,0,0,.28),inset 0 2px 0 rgba(255,255,255,.3);text-shadow:0 1px 1px rgba(0,0,0,.3);transition:transform .08s,box-shadow .08s}
+.dx-btn:hover{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 70%,#fff),color-mix(in srgb,var(--c) 92%,#fff));border:0}
+.dx-btn:active,.dx-tag:active{transform:translateY(5px);box-shadow:0 1px 0 color-mix(in srgb,var(--c) 45%,#000),0 3px 5px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.25)}
+.dx-tags{grid-template-columns:1fr 1fr;gap:14px;margin:0 0 24px}
+.dx-tag{border-radius:16px;padding:16px 14px 18px;min-height:108px;background:var(--c);background:linear-gradient(180deg,color-mix(in srgb,var(--c) 78%,#fff),var(--c));
+ box-shadow:0 6px 0 color-mix(in srgb,var(--c) 50%,#000),0 10px 14px rgba(0,0,0,.28),inset 0 2px 0 rgba(255,255,255,.3);transition:transform .08s,box-shadow .08s}
+.dx-tag:hover{filter:none}
+.dx-hbw{position:relative}
+.dx-hbands{position:absolute;top:0;left:0;right:0;height:6px;display:grid;grid-template-columns:repeat(4,1fr);border-radius:14px 14px 0 0;overflow:hidden;z-index:1;pointer-events:none}
+.dx-hbands i:nth-child(1){background:#D6322B}.dx-hbands i:nth-child(2){background:#F2B705}.dx-hbands i:nth-child(3){background:#1F5FBF}.dx-hbands i:nth-child(4){background:#1E9A4B}
+.dx-hb{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-radius:14px 14px 0 0;padding:20px 16px 14px;cursor:pointer;color:#3A1A00;font:700 16px 'Hind Siliguri',sans-serif;
+ background:linear-gradient(180deg,#FFF9E6,#F3E4B8);box-shadow:0 6px 0 #A8681A,0 10px 14px rgba(0,0,0,.25),inset 0 2px 0 #fff;position:relative;z-index:0;margin-bottom:6px}
+.dx-hb i.fa-book-open{margin-right:8px;color:#A8681A}
+.dx-hb.closed{border-radius:14px;margin-bottom:8px}
+.dx-chev{width:28px;height:28px;border-radius:50%;background:#3A1A00;color:#fff;display:grid;place-items:center;font-size:12px;box-shadow:0 2px 0 #000;transition:transform .2s}
+.dx-hb.closed .dx-chev{transform:rotate(-90deg)}
+.dx-hb:active{transform:translateY(4px);box-shadow:0 2px 0 #A8681A,0 3px 5px rgba(0,0,0,.25),inset 0 2px 0 #fff}
+.dx-sheet{background:#FFFAEE;border:1px solid #EBC88F;border-top:0;border-radius:0 0 10px 10px;box-shadow:0 6px 0 -2px #F6DDB0,0 7px 0 -2px #EBC88F}
+.dx-sheet::before{top:0}
+.dx-sheet.closed{display:none}
+.dx-fill{border-bottom-color:#D3B27A}
+.dx-in{padding:14px 22px 14px 62px}
+@media(min-width:900px){.dx-acts{grid-template-columns:repeat(5,1fr)}.dx-acts .dx-btn:last-child{grid-column:auto}}
+@media(max-width:720px){.dx-tags{grid-template-columns:1fr 1fr}.dx-tag{padding:14px 12px 16px;min-height:100px}.dx-tag-v{font-size:22px}.dx-tag-ic{font-size:34px;right:10px}.dx-in{padding:14px 16px 14px 46px}.dx-acts{display:grid;grid-template-columns:1fr 1fr}.dx-acts .dx-btn:last-child{grid-column:1/-1}}
+</style>
+<style id="dxtile">
+.dx-acts{grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.dx-acts .dx-btn,.dx-acts .dx-btn:last-child{grid-column:auto}
+.dx-acts .dx-wide{grid-column:1/-1;min-height:84px;flex-direction:row;font-size:19px;background:linear-gradient(135deg,#0E7C3A,#1FA84F)!important}
+.dx-acts .dx-wide i{font-size:30px}
+.dx-acts .dx-btn{flex-direction:column;min-height:104px;gap:8px;border-radius:20px;font-size:16px;padding:14px 10px;box-shadow:0 5px 0 rgba(0,0,0,.28),0 10px 16px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.25)}
+.dx-acts .dx-btn i{font-size:30px;opacity:.95}
+.dx-acts .dx-btn:nth-child(2){background:linear-gradient(135deg,#5E8B1E,#97B83A)}
+.dx-acts .dx-btn:nth-child(3){background:linear-gradient(135deg,#7A2E1B,#B5532E)}
+.dx-acts .dx-btn:nth-child(4){background:linear-gradient(135deg,#1F5FBF,#4C93E0)}
+.dx-acts .dx-btn:nth-child(5){background:linear-gradient(135deg,#6B3A9E,#A06BD0)}
+@media(min-width:900px){.dx-acts{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.dx-acts .dx-wide{grid-column:auto}}
+</style>
+</head>
 <body>
 <aside class="sidebar" id="sidebar"><div class="sb-head"><div class="sb-logo">দো</div><div><div class="sb-brand">আমার দোকান</div><div class="sb-sub">ম্যানেজমেন্ট সিস্টেম</div></div></div><nav class="sb-nav"><div class="nav-lbl">প্রধান মেনু</div><div class="nav-i act" data-p="dashboard" tabindex="0"><i class="fas fa-th-large"></i><span>ড্যাশবোর্ড</span></div><div class="nav-i" data-p="products" tabindex="0"><i class="fas fa-boxes-stacked"></i><span>পণ্য তালিকা</span></div><div class="nav-i" data-p="stocks" tabindex="0"><i class="fas fa-warehouse"></i><span>পণ্য স্টক</span></div><div class="nav-i" data-p="customers" tabindex="0"><i class="fas fa-users"></i><span>গ্রাহক তালিকা</span></div><div class="nav-i" data-p="dealers" tabindex="0"><i class="fas fa-building"></i><span>কোম্পানি/ডিলার</span></div><div class="nav-lbl" style="margin-top:10px">রিপোর্ট</div><div class="nav-i" data-p="summary" tabindex="0"><i class="fas fa-calculator"></i><span>হিসাব সারাংশ</span></div><div class="nav-lbl" style="margin-top:10px">সিস্টেম</div><div class="nav-i" data-p="settings" tabindex="0"><i class="fas fa-gear"></i><span>সেটিং</span></div></nav><div class="sb-foot"><div class="sb-tools"><button type="button" onclick="dlBackup()"><i class="fas fa-download"></i> ব্যাকআপ নামান</button><button type="button" onclick="document.getElementById('rsFile').click()"><i class="fas fa-upload"></i> ব্যাকআপ ফেরান</button><input type="file" id="rsFile" accept=".json,application/json" style="display:none" onchange="rsBackup(this)"></div><div class="sb-user"><div class="sb-av">ব</div><div><div class="sb-nm">ব্যবহারকারী</div><div class="sb-rl">মালিক</div></div></div></div></aside>
 <main class="main"><header class="topbar"><div class="tb-l"><button class="hamb" id="hamb" aria-label="মেনু"><i class="fas fa-bars"></i></button><h1 class="tb-title" id="pageTitle">ড্যাশবোর্ড</h1></div><div class="tb-r"><button class="sync-btn synced" id="syncBtn" onclick="manualSync()"><i class="fas fa-cloud"></i><span>সিঙ্ক</span></button><div class="dt-box"><i class="far fa-calendar-alt"></i><span class="dt-d" id="dtDate"></span><span class="dt-s">|</span><span class="dt-t" id="dtTime"></span></div><button class="tb-btn" id="notifBtn" aria-label="নোটিফিকেশন"><i class="far fa-bell"></i><span class="nd"></span></button><button class="lo-btn" id="loBtn"><i class="fas fa-sign-out-alt"></i><span>লগআউট</span></button></div></header><div id="pgDashboard" class="page act"></div><div id="pgProducts" class="page"></div><div id="pgStocks" class="page"></div><div id="pgCustomers" class="page"></div><div id="pgDealers" class="page"></div><div id="pgSummary" class="page"></div><div id="pgSettings" class="page"></div></main>
@@ -395,7 +441,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden&&lsG
 
 /* ═══════════════ সেটিং ═══════════════ */
 var HAS_DEF_PHOTO=false;
-var SET_DEF={owner:'',btn:'#14301F',side:'#14301F',c1:'#1D4E9E',c2:'#0F6E66',btnSize:'m',txtSize:'m',shop:'আমার দোকান',sub:'ম্যানেজমেন্ট সিস্টেম',logo:'দো',showPhoto:false,photoY:30,msgDue:'আসসালামু আলাইকুম {নাম}। {দোকান} এ আপনার বাকি আছে ৳ {বাকি}। অনুগ্রহ করে দ্রুত পরিশোধ করুন। ধন্যবাদ।',msgDep:'প্রিয় {নাম}, আপনার ৳ {জমা} জমা পেয়েছি। বর্তমান বাকি ৳ {বাকি}। ধন্যবাদ। - {দোকান}'};
+var SET_DEF={owner:'',btn:'#4A2410',side:'#3A1D0C',c1:'#1D4E9E',c2:'#0F6E66',btnSize:'m',txtSize:'m',shop:'আমার দোকান',sub:'ম্যানেজমেন্ট সিস্টেম',logo:'দো',showPhoto:false,photoY:30,msgDue:'আসসালামু আলাইকুম {নাম}। {দোকান} এ আপনার বাকি আছে ৳ {বাকি}। অনুগ্রহ করে দ্রুত পরিশোধ করুন। ধন্যবাদ।',msgDep:'প্রিয় {নাম}, আপনার ৳ {জমা} জমা পেয়েছি। বর্তমান বাকি ৳ {বাকি}। ধন্যবাদ। - {দোকান}'};
 var PRESETS=[['ধানক্ষেত সবুজ','#14301F'],['নদীর নীল','#1D4E9E'],['গাঢ় টিল','#0F6E66'],['মাটির খয়েরি','#6B3F1D'],['আঙুরি বেগুনি','#5B2A86'],['মেরুন','#8C1D2E'],['কালচে ধূসর','#2B2F36']];
 function getSet(){var s=(DB&&DB.settings)||{},o={};for(var k in SET_DEF)o[k]=(s[k]===undefined||s[k]===null||s[k]==='')?SET_DEF[k]:s[k];return o}
 function hx(c){c=String(c||'').replace('#','');if(c.length===3)c=c.replace(/./g,'$&$&');return /^[0-9a-f]{6}$/i.test(c)?[parseInt(c.substr(0,2),16),parseInt(c.substr(2,2),16),parseInt(c.substr(4,2),16)]:[20,48,31]}
@@ -408,8 +454,8 @@ var S=getSet(),btn=S.btn,bt=onC(btn),bh=lumC(btn)>.2?mixC(btn,'#000000',.14):mix
 var side=S.side,st=onC(side),dark=st==='#ffffff';
 var sh=dark?mixC(side,'#ffffff',.07):mixC(side,'#000000',.06),sa=dark?mixC(side,'#ffffff',.16):mixC(side,'#000000',.12),sb=dark?mixC(side,'#ffffff',.12):mixC(side,'#000000',.14),stx=dark?mixC(side,'#ffffff',.68):mixC(side,'#000000',.62);
 var css=':root{--btn:'+btn+';--btn-t:'+bt+';--btn-h:'+bh+';--sb:'+side+';--sb-h:'+sh+';--sb-a:'+sa+';--sb-b:'+sb+';--sb-t:'+stx+';--sb-ta:'+st+'}';
-css+='.dx-btn,.lg-btn,.mbtn-gr,.mbtn-b,.pl-add,.action-btns button[style*="--blu"],.action-btns button[style*="--grn"]{background:var(--btn)!important;border-color:var(--btn)!important;color:var(--btn-t)!important}';
-css+='.dx-btn:hover,.lg-btn:hover,.mbtn-gr:hover,.mbtn-b:hover,.pl-add:hover{background:var(--btn-h)!important;border-color:var(--btn-h)!important;filter:none!important}';
+css+='.lg-btn,.mbtn-gr,.mbtn-b,.pl-add,.action-btns button[style*="--blu"],.action-btns button[style*="--grn"]{background:var(--btn)!important;border-color:var(--btn)!important;color:var(--btn-t)!important}';
+css+='.lg-btn:hover,.mbtn-gr:hover,.mbtn-b:hover,.pl-add:hover{background:var(--btn-h)!important;border-color:var(--btn-h)!important;filter:none!important}';
 css+='.sb-brand,.sb-nm,.nav-i:hover,.nav-i.act{color:'+st+'}.nav-lbl{color:var(--sb-t)!important}.sb-tools button:hover{color:'+st+'}';
 if(side.toLowerCase()!==SET_DEF.side.toLowerCase()){var lg=dark?mixC(side,'#ffffff',.28):mixC(side,'#000000',.22);css+='.sb-logo,.sb-av{background:'+lg+'!important;color:'+onC(lg)+'}'}
 css+='.dx-tag.red{--c:'+S.c1+';color:'+onC(S.c1)+'}.dx-tag.amb{--c:'+S.c2+';color:'+onC(S.c2)+'}';
@@ -513,21 +559,25 @@ document.getElementById('loBtn').addEventListener('click',function(){if(DB._dirt
 function dxM(n){return '৳ '+toBn(Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2}))}
 function dxLine(l,v,o){o=o||{};var open=o.click?'<button type="button" class="dx-line'+(o.cls?' '+o.cls:'')+'" onclick="'+o.click+'">':'<div class="dx-line'+(o.cls?' '+o.cls:'')+'">';var close=o.click?'</button>':'</div>';return open+'<span class="dx-l">'+l+'</span><i class="dx-fill"></i><span class="dx-v">'+v+'</span>'+close}
 function dxTag(c,t,v,sub,pg,ic){return '<button type="button" class="dx-tag '+c+'" onclick="showPage(\''+pg+'\')"><i class="fas '+ic+' dx-tag-ic" aria-hidden="true"></i><span class="dx-tag-t">'+t+'</span><span class="dx-tag-v">'+v+'</span><span class="dx-tag-s">'+sub+'</span></button>'}
+function toggleLedger(){var sh=document.getElementById('dxSheet'),hb=document.getElementById('dxHb');if(!sh||!hb)return;var c=!sh.classList.contains('closed');sh.classList.toggle('closed',c);hb.classList.toggle('closed',c);hb.setAttribute('aria-expanded',String(!c));lsSet('hianLedger',c?'0':'1')}
 function renderDash(){
 var td=autoDate(),e=getTE(),dt=new Date();
 var cash=getCS(td),cr=getCRS(td),tP=getTP(),tdue=totalAllDue(),tdd=totalDD(),tc=getTTC();
 var dp=Math.max(0,tc-(e.purchase+e.home+e.shop));
 var WD=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
 var pc=tP>=0?'var(--c-grn)':'var(--c-red)';
-var h='<div class="dx"><div class="dx-grid"><div class="dx-main"><section class="dx-sheet" aria-label="আজকের হিসাব"><div class="dx-bands" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="dx-in">';
+var open=lsGet('hianLedger')!=='0';
+var h='<div class="dx"><div class="dx-grid"><div class="dx-main">';
+h+='<div class="dx-acts"><button type="button" class="dx-btn dx-wide" onclick="openSI()"><i class="fas fa-file-invoice"></i> বাকি বিক্রি চালান</button><button type="button" class="dx-btn" onclick="openCS()"><i class="fas fa-money-bill-wave"></i> নগদ বিক্রি</button><button type="button" class="dx-btn" onclick="openTC()"><i class="fas fa-pen"></i> খরচ লিখুন</button><button type="button" class="dx-btn" onclick="openNC()"><i class="fas fa-user-plus"></i> নতুন গ্রাহক</button><button type="button" class="dx-btn" onclick="openNP()"><i class="fas fa-cube"></i> নতুন পণ্য</button></div>';
+h+='<div class="dx-tags">'+dxTag('red','গ্রাহকের বাকি',dxM(tdue),toBn(DB.customers.length)+' জন গ্রাহক','customers','fa-wallet')+dxTag('amb','ডিলার বাকি',dxM(tdd),toBn(DB.dealers.length)+' জন ডিলার','dealers','fa-building')+'</div>';
+h+='<div class="dx-hbw"><span class="dx-hbands" aria-hidden="true"><i></i><i></i><i></i><i></i></span><button type="button" class="dx-hb'+(open?'':' closed')+'" id="dxHb" onclick="toggleLedger()" aria-expanded="'+open+'" aria-controls="dxSheet"><span><i class="fas fa-book-open"></i> আজকের হিসাব</span><span class="dx-chev"><i class="fas fa-chevron-down"></i></span></button></div>';
+h+='<section class="dx-sheet'+(open?'':' closed')+'" id="dxSheet" aria-label="আজকের হিসাব"><div class="dx-in">';
 h+='<div class="dx-head"><h2 class="dx-date">'+toBn(dt.getDate())+' '+MONTHS[dt.getMonth()]+'</h2><p class="dx-year">'+toBn(dt.getFullYear())+', '+WD[dt.getDay()]+'</p></div>';
 h+='<div class="dx-cols"><div class="dx-col"><h3>বিক্রি</h3>'+dxLine('নগদ',dxM(cash))+dxLine('বাকি',dxM(cr),{click:'openCSV()'})+dxLine('মোট বিক্রি',dxM(cash+cr),{cls:'tot'})+'</div>';
 h+='<div class="dx-col"><h3>খরচ</h3>'+dxLine('পণ্য ক্রয়',dxM(e.purchase))+dxLine('ডিলার পেমেন্ট',dxM(dp))+dxLine('বাড়ি',dxM(e.home))+dxLine('দোকান',dxM(e.shop))+dxLine('মোট খরচ',dxM(tc),{cls:'tot'})+'</div></div>';
 h+='<div class="dx-bottom"><span>আজকের লাভ</span><strong style="color:'+pc+'">'+dxM(tP)+'</strong></div>';
-h+='<div class="dx-acts"><button type="button" class="dx-btn" onclick="openCS()"><i class="fas fa-money-bill-wave"></i> নগদ বিক্রি</button><button type="button" class="dx-btn" onclick="openSI()"><i class="fas fa-file-invoice"></i> নতুন চালান</button><button type="button" class="dx-btn" onclick="openTC()"><i class="fas fa-pen"></i> খরচ লিখুন</button><button type="button" class="dx-btn" onclick="openNC()"><i class="fas fa-user-plus"></i> নতুন গ্রাহক</button><button type="button" class="dx-btn" onclick="openNP()"><i class="fas fa-cube"></i> নতুন পণ্য</button></div>';
 h+='</div></section>';
-h+='<div class="dx-tags">'+dxTag('red','গ্রাহকের বাকি',dxM(tdue),toBn(DB.customers.length)+' জন গ্রাহক','customers','fa-wallet')+dxTag('amb','ডিলার বাকি',dxM(tdd),toBn(DB.dealers.length)+' জন ডিলার','dealers','fa-building')+'</div>';
-h+='</div><figure class="dx-photo" role="img" aria-label="সূর্যাস্তের সময় নদীর ধারে তোলা ছবি"></figure></div></div>';
+h+='</div><figure class="dx-photo" role="img" aria-label="ড্যাশবোর্ডের ছবি"></figure></div></div>';
 document.getElementById('pgDashboard').innerHTML=h}
 function openTS(){setM('mainModal','<div class="m-head"><h3>আজকের বিক্রি</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body"><div style="display:flex;gap:20px"><div class="dash-popup-opt card-green" onclick="closeM(\'mainModal\');openCS()"><i class="fas fa-money-bill-wave" style="color:var(--grn)"></i><span>নগদ</span><div style="font-size:12px;color:var(--tm)">৳ '+toBn(getCS(autoDate()).toFixed(2))+'</div></div><div class="dash-popup-opt card-orange" onclick="closeM(\'mainModal\');openCSV()"><i class="fas fa-file-invoice-dollar" style="color:var(--org)"></i><span>বাকি</span><div style="font-size:12px;color:var(--tm)">৳ '+toBn(getCRS(autoDate()).toFixed(2))+'</div></div></div></div>');openM('mainModal')}
 function openCSV(){var td=autoDate(),r='';DB.customers.forEach(function(c){c.transactions.forEach(function(t){if(t.type==='invoice'&&t.date===td)r+='<tr><td>'+esc(c.name)+'</td><td>'+esc(t.invoiceNo)+'</td><td class="t-num">৳ '+toBn(t.totalBill)+'</td></tr>'})});setM('mainModal','<div class="m-head"><h3>বাকি বিক্রি</h3><button class="m-x" onclick="closeM(\'mainModal\')"><i class="fas fa-times"></i></button></div><div class="m-body">'+(r?'<table><thead><tr><th>গ্রাহক</th><th>চালান</th><th>বিক্রি</th></tr></thead><tbody>'+r+'</tbody></table>':'<p class="empty-msg">আজ কোনো বাকি বিক্রি হয়নি</p>')+'</div>');openM('mainModal')}
