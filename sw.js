@@ -1,5 +1,5 @@
 /* অফলাইনে চালানোর ফাইল। অ্যাপ নতুন করে দিলে V-এর সংখ্যা বাড়ান। */
-var V='hisab-fb-v12',EXT='hisab-fb-ext';
+var V='hisab-fb-v13',EXT='hisab-fb-ext';
 var CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png'];
 var CDN=/(^|\.)(gstatic\.com|fonts\.googleapis\.com|cdnjs\.cloudflare\.com|cdn\.tailwindcss\.com)$/;
 self.addEventListener('install',function(e){e.waitUntil(caches.open(V).then(function(c){return c.addAll(CORE)}).then(function(){return self.skipWaiting()}))});
