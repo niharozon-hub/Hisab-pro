@@ -166,6 +166,20 @@ body{background:linear-gradient(180deg,#9B6AD6 0%,#7B45B8 55%,#5E3294 100%) fixe
 @media(min-width:900px){.dx-acts{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.dx-acts .dx-wide{grid-column:auto}}
 </style>
 <style id="hambfix">.hamb{color:#fff!important;font-size:26px!important;padding:6px 10px;text-shadow:0 1px 2px rgba(0,0,0,.35)}.topbar .sync-btn,.topbar .tb-r button{border-color:rgba(255,255,255,.7)}</style>
+<style id="fs14">
+.topbar .tb-btn,.topbar .sync-btn{background:var(--red-l)!important;border-color:#fdd!important;color:#5E3294!important}
+.topbar .sync-btn.synced{color:var(--grn)!important}.topbar .sync-btn.error{color:var(--red)!important}
+.modal-ov.show{align-items:stretch;justify-content:stretch;background:var(--card);backdrop-filter:none}
+.modal,.modal.sm{width:100vw!important;max-width:none!important;height:100vh;height:100dvh;max-height:none!important;border-radius:0!important;box-shadow:none!important;animation:none;display:flex;flex-direction:column;overflow-y:auto}
+.modal .m-head{position:sticky;top:0;z-index:3;background:var(--card);border-radius:0;justify-content:flex-start;gap:6px;padding-left:max(16px,calc((100% - 900px)/2));padding-right:max(16px,calc((100% - 900px)/2))}
+.modal .m-head h3{flex:1}
+.modal .m-x{display:none!important}
+.m-back{background:none;border:0;font-size:24px;line-height:1;padding:4px 12px 4px 0;cursor:pointer;color:var(--tp);font-family:inherit}
+.modal .m-body{flex:1 0 auto;width:100%;max-width:900px;margin:0 auto}
+.modal .m-foot{position:sticky;bottom:0;z-index:3;border-radius:0;background:var(--card);padding-left:max(16px,calc((100% - 900px)/2));padding-right:max(16px,calc((100% - 900px)/2))}
+.bn-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;margin-bottom:10px;border-left:5px solid var(--org,#E0A800)}
+.bn-row b{font-size:15px}.bn-sub{font-size:12px;color:var(--tm);margin-top:2px}
+</style>
 </head>
 <body>
 <aside class="sidebar" id="sidebar"><div class="sb-head"><div class="sb-logo">দো</div><div><div class="sb-brand">আমার দোকান</div><div class="sb-sub">ম্যানেজমেন্ট সিস্টেম</div></div></div><nav class="sb-nav"><div class="nav-lbl">প্রধান মেনু</div><div class="nav-i act" data-p="dashboard" tabindex="0"><i class="fas fa-th-large"></i><span>ড্যাশবোর্ড</span></div><div class="nav-i" data-p="products" tabindex="0"><i class="fas fa-boxes-stacked"></i><span>পণ্য তালিকা</span></div><div class="nav-i" data-p="stocks" tabindex="0"><i class="fas fa-warehouse"></i><span>পণ্য স্টক</span></div><div class="nav-i" data-p="customers" tabindex="0"><i class="fas fa-users"></i><span>গ্রাহক তালিকা</span></div><div class="nav-i" data-p="dealers" tabindex="0"><i class="fas fa-building"></i><span>কোম্পানি/ডিলার</span></div><div class="nav-lbl" style="margin-top:10px">রিপোর্ট</div><div class="nav-i" data-p="summary" tabindex="0"><i class="fas fa-calculator"></i><span>হিসাব সারাংশ</span></div><div class="nav-lbl" style="margin-top:10px">সিস্টেম</div><div class="nav-i" data-p="settings" tabindex="0"><i class="fas fa-gear"></i><span>সেটিং</span></div></nav><div class="sb-foot"><div class="sb-tools"><button type="button" onclick="dlBackup()"><i class="fas fa-download"></i> ব্যাকআপ নামান</button><button type="button" onclick="document.getElementById('rsFile').click()"><i class="fas fa-upload"></i> ব্যাকআপ ফেরান</button><input type="file" id="rsFile" accept=".json,application/json" style="display:none" onchange="rsBackup(this)"></div><div class="sb-user"><div class="sb-av">ব</div><div><div class="sb-nm">ব্যবহারকারী</div><div class="sb-rl">মালিক</div></div></div></div></aside>
@@ -553,7 +567,7 @@ updateDT();setInterval(updateDT,10000);
 function toast(t,m){var b=document.getElementById('toastBox'),e=document.createElement('div');e.className='toast';var ic={ok:'fa-check',info:'fa-info',warn:'fa-exclamation',err:'fa-times'};e.innerHTML='<div class="t-ic '+t+'"><i class="fas '+ic[t]+'"></i></div><span>'+esc(m)+'</span>';b.appendChild(e);setTimeout(function(){e.classList.add('out');setTimeout(function(){e.remove()},250)},3000)}
 function openM(id){document.getElementById(id).classList.add('show');document.body.style.overflow='hidden'}
 function closeM(id){document.getElementById(id).classList.remove('show');document.body.style.overflow=''}
-function setM(id,h){document.getElementById(id+'Inner').innerHTML=h}
+function setM(id,h){if(h.indexOf('m-back')<0)h=h.replace('<div class="m-head"><h3>','<div class="m-head"><button type="button" class="m-back" onclick="closeM(\''+id+'\')" aria-label="ফিরে যান">←</button><h3>');document.getElementById(id+'Inner').innerHTML=h}
 function sCL(i,d){var inp=document.getElementById(i);if(inp)inp.addEventListener('blur',function(){setTimeout(function(){var dd=document.getElementById(d);if(dd)dd.style.display='none'},150)})}
 document.getElementById('mainModal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeM('mainModal')});
 document.getElementById('subModal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeM('subModal')});
@@ -568,7 +582,21 @@ function showPage(p){document.querySelectorAll('.page').forEach(function(e){e.cl
 document.querySelectorAll('.nav-i').forEach(function(el){function go(){showPage(el.dataset.p)}el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
 document.getElementById('hamb').addEventListener('click',function(){var s=document.getElementById('sidebar'),o=document.getElementById('sbOv');s.classList.toggle('open');o.style.display=s.classList.contains('open')?'block':'none'});
 document.getElementById('sbOv').addEventListener('click',function(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sbOv').style.display='none'});
-document.getElementById('notifBtn').addEventListener('click',function(){toast('info','কোনো নতুন নোটিফিকেশন নেই');document.querySelector('.nd').style.display='none'});
+function credit7(){var T=new Date();T=new Date(T.getFullYear(),T.getMonth(),T.getDate()),m={};
+(DB.customers||[]).forEach(function(c){(c.transactions||[]).forEach(function(t){if(t.type!=='invoice'||!(t.due>0))return;var p=parseDate(t.date);if(!p)return;var d=new Date(p.year,p.month,p.day),df=Math.round((T-d)/864e5);if(df<0||df>6)return;var r=m[c.id]||(m[c.id]={c:c,sum:0,n:0,last:d,lastS:t.date});r.sum+=t.due;r.n++;if(d>=r.last){r.last=d;r.lastS=t.date}})});
+var l=Object.keys(m).map(function(k){return m[k]});l.sort(function(a,b){return b.sum-a.sum});return l}
+function updNd(){var e=document.querySelector('.nd');if(!e)return;try{e.style.display=credit7().length?'block':'none'}catch(x){e.style.display='none'}}
+function openBell(){var l=credit7(),tot=0;l.forEach(function(r){tot+=r.sum});
+var h='<div class="m-head"><h3>নোটিফিকেশন</h3></div><div class="m-body">';
+if(!l.length)h+='<p class="empty-msg">কোনো নতুন নোটিফিকেশন নেই</p>';
+else h+='<div class="bn-row" onclick="openCr7()"><div><b>গত ৭ দিনে '+toBn(l.length)+' জন গ্রাহক বাকি নিয়েছেন</b><div class="bn-sub">মোট বাকি ৳ '+fmtAmt(tot)+' · চাপলে তালিকা দেখুন</div></div><i class="fas fa-chevron-right"></i></div>';
+h+='</div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'subModal\')">বন্ধ</button></div>';setM('subModal',h);openM('subModal')}
+function openCr7(){var l=credit7(),tot=0;l.forEach(function(r){tot+=r.sum});
+var h='<div class="m-head"><h3>গত ৭ দিনে বাকি নিয়েছেন ('+toBn(l.length)+' জন)</h3></div><div class="m-body"><table><thead><tr><th>গ্রাহক</th><th>বাকি নিয়েছেন</th><th>কতবার</th><th>শেষ</th></tr></thead><tbody>';
+l.forEach(function(r){h+='<tr><td><span class="t-name" onclick="closeM(\'sub2Modal\');oCD('+r.c.id+')">'+esc(r.c.name)+'</span><div class="al-t">'+esc(r.c.phone||'')+'</div></td><td class="t-num" style="color:var(--red)">৳ '+fmtAmt(r.sum)+'</td><td>'+toBn(r.n)+' বার</td><td>'+esc(r.lastS)+'</td></tr>'});
+h+='<tr style="font-weight:700;border-top:2px solid var(--bd)"><td>মোট</td><td class="t-num" style="color:var(--red)">৳ '+fmtAmt(tot)+'</td><td></td><td></td></tr></tbody></table></div><div class="m-foot"><button class="mbtn mbtn-g" onclick="closeM(\'sub2Modal\')">বন্ধ</button></div>';setM('sub2Modal',h);openM('sub2Modal')}
+document.getElementById('notifBtn').addEventListener('click',openBell);
+var _sp14=showPage;showPage=function(p){_sp14(p);updNd()};
 document.getElementById('loBtn').addEventListener('click',function(){if(DB._dirty&&!confirm('কিছু পরিবর্তন এখনো ক্লাউডে যায়নি। লগআউট করলেও হিসাব এই ডিভাইসে থাকবে, আবার ঢুকলে ক্লাউডে যাবে। লগআউট করবেন?'))return;lockApp()});
 
 /* ═══════════════ ড্যাশবোর্ড ═══════════════ */
