@@ -189,6 +189,10 @@ body{background:linear-gradient(180deg,#9B6AD6 0%,#7B45B8 55%,#5E3294 100%) fixe
 .dx-tag-t{font-size:13px!important}
 .dx-tag-s{font-size:11px!important;margin-top:0!important}
 .dx-tag-ic{font-size:30px!important}
+.dx-chart{background:#fff;border-radius:18px;padding:12px 12px 8px;margin:0 0 22px;box-shadow:0 5px 0 rgba(0,0,0,.2),0 10px 16px rgba(0,0,0,.18)}
+.dx-ch-h{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:6px;color:#1a2236;font-size:12px}.dx-ch-h b{font-size:14px;flex:1 0 100%}
+.dx-ch-h span{display:inline-flex;align-items:center;gap:5px}.dx-ch-h i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.dx-tag{overflow:hidden}
 </style>
 </head>
 <body>
@@ -454,7 +458,9 @@ applySettings();
 if(navigator.onLine===false)toast('info','অফলাইন আছেন। কাজ করুন, নেট এলে নিজে সিঙ্ক হবে');
 var fresh=getBase()===0&&!HAD_LOCAL;
 if(!fresh)renderDash();
-pullServer(false,function(){if(fresh)renderDash()})}
+pullServer(false,function(){if(fresh)renderDash();expClr()})}
+function expClr(){if(lsGet('hianExpClr1'))return;if(!DB.expenses||!DB.expenses.length){lsSet('hianExpClr1','1');return}
+if(confirm('আগের সব খরচ ('+toBn(DB.expenses.length)+'টি) মুছে ০ করবেন? ডিলার পেমেন্ট, গ্রাহক ও বিক্রি থাকবে।')){try{lsSet('hianExpBak',JSON.stringify(DB.expenses))}catch(e){}DB.expenses=[];saveDB();renderDash();toast('ok','সব খরচ মুছে ০ করা হয়েছে')}lsSet('hianExpClr1','1')}
 function bootApp(){
 if(!lsGet('hianTok')){var m=lsGet('hianMsg');lsDel('hianMsg');showLogin(m);return}
 startApp()}
@@ -612,8 +618,20 @@ document.getElementById('loBtn').addEventListener('click',function(){if(DB._dirt
 /* ═══════════════ ড্যাশবোর্ড ═══════════════ */
 function dxM(n){return '৳ '+toBn(Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2}))}
 function dxLine(l,v,o){o=o||{};var open=o.click?'<button type="button" class="dx-line'+(o.cls?' '+o.cls:'')+'" onclick="'+o.click+'">':'<div class="dx-line'+(o.cls?' '+o.cls:'')+'">';var close=o.click?'</button>':'</div>';return open+'<span class="dx-l">'+l+'</span><i class="dx-fill"></i><span class="dx-v">'+v+'</span>'+close}
-function dxTag(c,t,v,sub,pg,ic){return '<button type="button" class="dx-tag '+c+'" onclick="showPage(\''+pg+'\')"><i class="fas '+ic+' dx-tag-ic" aria-hidden="true"></i><span class="dx-tag-t">'+t+'</span><span class="dx-tag-v">'+v+'</span><span class="dx-tag-s">'+sub+'</span></button>'}
+function dxTag(c,t,v,sub,pg,ic){return '<button type="button" class="dx-tag '+c+'" onclick="showPage(\''+pg+'\')"><i class="fas '+ic+' dx-tag-ic" aria-hidden="true"></i><span class="dx-tag-t">'+t+'</span><span class="dx-tag-v" style="font-size:'+(String(v).length>13?'15':String(v).length>11?'18':String(v).length>9?'21':'24')+'px;white-space:nowrap">'+v+'</span><span class="dx-tag-s">'+sub+'</span></button>'}
 function toggleLedger(){var sh=document.getElementById('dxSheet'),hb=document.getElementById('dxHb');if(!sh||!hb)return;var c=!sh.classList.contains('closed');sh.classList.toggle('closed',c);hb.classList.toggle('closed',c);hb.setAttribute('aria-expanded',String(!c));lsSet('hianLedger',c?'0':'1')}
+
+var MSH=['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'];
+function dxCmp(n){n=Math.round(n);if(n>=10000000)return toBn((n/10000000).toFixed(1).replace(/\.0$/,''))+' কোটি';if(n>=100000)return toBn((n/100000).toFixed(1).replace(/\.0$/,''))+' লাখ';if(n>=1000)return toBn((n/1000).toFixed(1).replace(/\.0$/,''))+' হা';return toBn(n)}
+function dxChart(){var now=new Date(),a=[],mx=0,i;for(i=11;i>=0;i--){var d=new Date(now.getFullYear(),now.getMonth()-i,1),r=getMD(d.getMonth(),d.getFullYear());a.push({m:d.getMonth(),ts:r.ts,cr:r.cr});if(r.ts>mx)mx=r.ts}
+var step=1,mag=Math.pow(10,Math.floor(Math.log10(mx||1)));[1,1.2,1.5,2,2.5,3,4,5,10].some(function(k){step=k*mag;return step*4>=mx});var top=step*4||4;
+var W=340,H=170,L=44,B=22,T=8,ch=H-B-T,cw=W-L-4,gw=cw/12,bw=Math.min(9,gw/2-1.5);
+var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="মাসিক বিক্রি ও বাকি বিক্রির চার্ট" style="width:100%;height:auto;display:block">';
+for(i=0;i<=4;i++){var y=T+ch-ch*i/4;s+='<line x1="'+L+'" x2="'+(W-4)+'" y1="'+y+'" y2="'+y+'" stroke="#e3e6ee" stroke-width="1"/><text x="'+(L-5)+'" y="'+(y+3)+'" text-anchor="end" font-size="9" fill="#6b7280">'+(i?dxCmp(top*i/4):'০')+'</text>'}
+a.forEach(function(r,k){var x=L+k*gw+gw/2,h1=ch*r.ts/top,h2=ch*r.cr/top;
+s+='<rect x="'+(x-bw-.5)+'" y="'+(T+ch-h1)+'" width="'+bw+'" height="'+h1+'" rx="2" fill="#2E8B57"/><rect x="'+(x+.5)+'" y="'+(T+ch-h2)+'" width="'+bw+'" height="'+h2+'" rx="2" fill="#E0780F"/><text x="'+x+'" y="'+(H-7)+'" text-anchor="middle" font-size="8" fill="#4b5563">'+MSH[r.m]+'</text>'});
+s+='</svg>';
+return '<section class="dx-chart" aria-label="মাসিক হিসাব"><div class="dx-ch-h"><b>মাসিক বিক্রি ও বাকি</b><span><i style="background:#2E8B57"></i>মোট বিক্রি</span><span><i style="background:#E0780F"></i>বাকি বিক্রি</span></div>'+s+'</section>'}
 function renderDash(){
 var td=autoDate(),e=getTE(),dt=new Date();
 var cash=getCS(td),cr=getCRS(td),tP=getTP(),tdue=totalAllDue(),tdd=totalDD(),tc=getTTC();
@@ -624,6 +642,7 @@ var open=lsGet('hianLedger')!=='0';
 var h='<div class="dx"><div class="dx-grid"><div class="dx-main">';
 h+='<div class="dx-acts"><button type="button" class="dx-btn dx-wide" onclick="openSI()"><i class="fas fa-file-invoice"></i> বাকি বিক্রি চালান</button><button type="button" class="dx-btn" onclick="openCS()"><i class="fas fa-money-bill-wave"></i> নগদ বিক্রি</button><button type="button" class="dx-btn" onclick="openTC()"><i class="fas fa-pen"></i> খরচ লিখুন</button><button type="button" class="dx-btn" onclick="openNC()"><i class="fas fa-user-plus"></i> নতুন গ্রাহক</button><button type="button" class="dx-btn" onclick="openNP()"><i class="fas fa-cube"></i> নতুন পণ্য</button></div>';
 h+='<div class="dx-tags">'+dxTag('red','গ্রাহকের বাকি',dxM(tdue),toBn(DB.customers.length)+' জন গ্রাহক','customers','fa-wallet')+dxTag('amb','ডিলার বাকি',dxM(tdd),toBn(DB.dealers.length)+' জন ডিলার','dealers','fa-building')+'</div>';
+h+=dxChart();
 h+='<div class="dx-hbw"><span class="dx-hbands" aria-hidden="true"><i></i><i></i><i></i><i></i></span><button type="button" class="dx-hb'+(open?'':' closed')+'" id="dxHb" onclick="toggleLedger()" aria-expanded="'+open+'" aria-controls="dxSheet"><span><i class="fas fa-book-open"></i> আজকের হিসাব</span><span class="dx-chev"><i class="fas fa-chevron-down"></i></span></button></div>';
 h+='<section class="dx-sheet'+(open?'':' closed')+'" id="dxSheet" aria-label="আজকের হিসাব"><div class="dx-in">';
 h+='<div class="dx-head"><h2 class="dx-date">'+toBn(dt.getDate())+' '+MONTHS[dt.getMonth()]+'</h2><p class="dx-year">'+toBn(dt.getFullYear())+', '+WD[dt.getDay()]+'</p></div>';
